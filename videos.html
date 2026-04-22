@@ -1,370 +1,388 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Video Lectures – Campus Funda</title>
-  <link href="shared.css" rel="stylesheet" />
-  <style>
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    @media (max-width: 900px) {
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Video Lectures – Campus Funda</title>
+    <link href="shared.css" rel="stylesheet" />
+    <style>
       .videos-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
       }
-    }
 
-    @media (max-width: 600px) {
-      .videos-grid {
-        grid-template-columns: 1fr;
+      @media (max-width: 900px) {
+        .videos-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
-    }
 
-    .channel-bar {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-    }
+      @media (max-width: 600px) {
+        .videos-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    .channel-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--accent-grad);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-    }
+      .channel-bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 32px;
+      }
 
-    .channel-info h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
+      .channel-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--accent-grad);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
 
-    .channel-info p {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
+      .channel-info h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
 
-    .subscribe-btn {
-      margin-left: auto;
-      background: #ff0000;
-      color: #fff;
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
+      .channel-info p {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
 
-    .subscribe-btn:hover {
-      opacity: 0.88;
-    }
+      .subscribe-btn {
+        margin-left: auto;
+        background: #ff0000;
+        color: #fff;
+        padding: 9px 20px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
 
-    .free-chip {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(10, 180, 181, 0.9);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 4px;
-    }
-  </style>
-</head>
+      .subscribe-btn:hover {
+        opacity: 0.88;
+      }
 
-<body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <a href="about-us.html"> For Institutes </a>
-      <a href="about-us.html"> For Authors </a>
-      <a href="about-us.html"> For Publishers </a>
-    </div>
-  </div>
-  <header>
-    <div class="header-inner">
-      <div class="logo-area">
-        <a href="index.html">
-          <img alt="Campus Funda" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png" />
-        </a>
-      </div>
-      <ul class="main-nav">
-        <li>
-          <a href="search.html"> Higher Education </a>
-        </li>
-        <li>
-          <a href="search.html"> Competitive Exams </a>
-        </li>
-        <li>
-          <a href="search.html"> School </a>
-        </li>
-        <li><a href="about-us.html">About-Us</a></li>
-      </ul>
-      <div class="header-actions" id="headerActions">
-        <a class="cart-btn" href="cart.html">
-          🛒
-          <span class="cart-badge" id="cartCount">0</span>
-        </a>
+      .free-chip {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(10, 180, 181, 0.9);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a href="about-us.html"> For Institutes </a>
+        <a href="about-us.html"> For Authors </a>
+        <a href="about-us.html"> For Publishers </a>
       </div>
     </div>
-  </header>
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb">
-        <a href="index.html"> Home </a>
-        <span> › </span>
-        <span> Video Lectures </span>
+    <header>
+      <div class="header-inner">
+        <div class="logo-area">
+          <a href="index.html">
+            <img
+              alt="Campus Funda"
+              src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png"
+            />
+          </a>
+        </div>
+        <ul class="main-nav">
+          <li>
+            <a href="search.html"> Higher Education </a>
+          </li>
+          <li>
+            <a href="search.html"> Competitive Exams </a>
+          </li>
+          <li>
+            <a href="search.html"> School </a>
+          </li>
+          <li><a href="about-us.html">About-Us</a></li>
+        </ul>
+        <div class="header-actions" id="headerActions">
+          <a class="cart-btn" href="cart.html">
+            🛒
+            <span class="cart-badge" id="cartCount">0</span>
+          </a>
+        </div>
       </div>
-      <h1>Video Lectures</h1>
-      <p>
-        Watch high-quality engineering and science video lectures — many
-        completely free.
-      </p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="channel-bar">
-      <div class="channel-avatar">🎥</div>
-      <div class="channel-info">
-        <h4>Campus Funda Official</h4>
-        <p>
-          50+ video lectures | Engineering &amp; Science topics | Free &amp;
-          Premium
-        </p>
-      </div>
-      <button class="subscribe-btn">📺 Subscribe</button>
-    </div>
-    <div class="filter-bar">
-      <div class="search-wrap">
-        <input id="searchInput" placeholder="Search video lectures..." type="text" />
-        <button id="searchBtn">🔍</button>
-      </div>
-      <select id="subjectFilter" class="filter-select">
-        <option>All Subjects</option>
-        <option>Electrical Engineering</option>
-        <option>Computer Engineering</option>
-        <option>Mechanical Engineering</option>
-        <option>Electronics</option>
-      </select>
-      <select id="typeFilter" class="filter-select">
-        <option>All</option>
-        <option>Free Only</option>
-        <option>Premium</option>
-      </select>
-    </div>
-    <div class="sec-title">All Video Lectures</div>
-    <div class="sec-bar"></div>
-    <div class="videos-grid" id="videoContainer"></div>
-  </div>
-  <footer>
-    <div class="footer-main">
-      <div class="footer-col-about">
-        <img alt="Campus Funda" class="footer-logo"
-          src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png" />
-        <p class="footer-about-text">
-          Campus Funda – making learning easy, advanced &amp; accessible for
-          every student.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h5>QUICK LINKS</h5>
-        <div class="footer-bar"></div>
-        <p>
+    </header>
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
           <a href="index.html"> Home </a>
-        </p>
+          <span> › </span>
+          <span> Video Lectures </span>
+        </div>
+        <h1>Video Lectures</h1>
         <p>
-          <a href="search.html"> eBooks </a>
+          Watch high-quality engineering and science video lectures — many
+          completely free.
         </p>
-        <p>
-          <a href="videos.html"> Videos </a>
-        </p>
-        <p>
-          <a href="mcqs.html"> MCQ's </a>
-        </p>
-        <p>
-          <a href="discussion-forum.html"> Discussion Forum </a>
-        </p>
-        <p>
-          <a href="about-us.html"> About Us </a>
-        </p>
-      </div>
-      <div class="footer-col footer-newsletter">
-        <h5>NEWSLETTER</h5>
-        <div class="footer-bar"></div>
-        <p>Email Address:</p>
-        <input placeholder="Your email address" type="email" />
-        <button>Subscribe</button>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">
-        © 2024
-        <span> Campus Funda </span>
-        – All Rights Reserved
-      </p>
-      <div class="social-links">
-        <a href="https://www.facebook.com/campusfunda/" rel="noopener" target="_blank">
-          f
-        </a>
-        <a href="https://www.linkedin.com/company/campus-funda/" rel="noopener" target="_blank">
-          in
-        </a>
+    <div class="container">
+      <div class="channel-bar">
+        <div class="channel-avatar">🎥</div>
+        <div class="channel-info">
+          <h4>Campus Funda Official</h4>
+          <p>
+            50+ video lectures | Engineering &amp; Science topics | Free &amp;
+            Premium
+          </p>
+        </div>
+        <button class="subscribe-btn">📺 Subscribe</button>
+      </div>
+      <div class="filter-bar">
+        <div class="search-wrap">
+          <input
+            id="searchInput"
+            placeholder="Search video lectures..."
+            type="text"
+          />
+          <button id="searchBtn">🔍</button>
+        </div>
+        <select id="subjectFilter" class="filter-select">
+          <option>All Subjects</option>
+          <option>Electrical Engineering</option>
+          <option>Computer Engineering</option>
+          <option>Mechanical Engineering</option>
+          <option>Electronics</option>
+        </select>
+        <select id="typeFilter" class="filter-select">
+          <option>All</option>
+          <option>Free Only</option>
+          <option>Premium</option>
+        </select>
+      </div>
+      <div class="sec-title">All Video Lectures</div>
+      <div class="sec-bar"></div>
+      <div class="videos-grid" id="videoContainer"></div>
+    </div>
+    <footer>
+      <div class="footer-main">
+        <div class="footer-col-about">
+          <img
+            alt="Campus Funda"
+            class="footer-logo"
+            src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png"
+          />
+          <p class="footer-about-text">
+            Campus Funda – making learning easy, advanced &amp; accessible for
+            every student.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>QUICK LINKS</h5>
+          <div class="footer-bar"></div>
+          <p>
+            <a href="index.html"> Home </a>
+          </p>
+          <p>
+            <a href="search.html"> eBooks </a>
+          </p>
+          <p>
+            <a href="videos.html"> Videos </a>
+          </p>
+          <p>
+            <a href="mcqs.html"> MCQ's </a>
+          </p>
+          <p>
+            <a href="discussion-forum.html"> Discussion Forum </a>
+          </p>
+          <p>
+            <a href="about-us.html"> About Us </a>
+          </p>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h5>NEWSLETTER</h5>
+          <div class="footer-bar"></div>
+          <p>Email Address:</p>
+          <input placeholder="Your email address" type="email" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2024
+          <span> Campus Funda </span>
+          – All Rights Reserved
+        </p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/campusfunda/"
+            rel="noopener"
+            target="_blank"
+          >
+            f
+          </a>
+          <a
+            href="https://www.linkedin.com/company/campus-funda/"
+            rel="noopener"
+            target="_blank"
+          >
+            in
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      /* ===== DATA ===== */
+      const VIDEOS = [
+        {
+          id: "v1",
+          title: "Ohm's Law",
+          subject: "Electrical Engineering",
+          price: 0,
+          img: "http://img.youtube.com/vi/Qn1dQ0vf4N4/hqdefault.jpg",
+        },
+        {
+          id: "v2",
+          title: "The Stack in a Microprocessor",
+          subject: "Computer Engineering",
+          price: 0,
+          img: "http://img.youtube.com/vi/d-2Peb3pCBg/hqdefault.jpg",
+        },
+        {
+          id: "v3",
+          title: "Hydroelectric Power Plant",
+          subject: "Mechanical Engineering",
+          price: 0,
+          img: "http://img.youtube.com/vi/Uhjhufhg3Xk/hqdefault.jpg",
+        },
+        {
+          id: "v4",
+          title: "Microprocessor 8086 Architecture",
+          subject: "Electronics",
+          price: 0,
+          img: "http://img.youtube.com/vi/RVNXZS-HOgw/hqdefault.jpg",
+        },
+        {
+          id: "v5",
+          title: "Process Scheduling in Operating Systems",
+          subject: "Computer Engineering",
+          price: 49,
+          img: "http://img.youtube.com/vi/yIH8V62pHWk/hqdefault.jpg",
+        },
+      ];
+
+      let filteredVideos = [...VIDEOS];
+
+      /* ===== RENDER ===== */
+      function renderVideos() {
+        const container = document.getElementById("videoContainer");
+
+        if (filteredVideos.length === 0) {
+          container.innerHTML = "<p>No videos found</p>";
+          return;
+        }
+
+        container.innerHTML = filteredVideos
+          .map(
+            (v) => `
+    <div class="video-card" onclick="openVideo('${v.id}')"">
+      <div class="video-thumb">
+        <img src="${v.img}" />
+        ${v.price === 0 ? '<span class="free-chip">FREE</span>' : ""}
+      </div>
+
+      <div class="card-body">
+        <div class="card-title">${v.title}</div>
+        <div class="card-sub">${v.subject}</div>
       </div>
     </div>
-  </footer>
-  <script>
-    /* ===== DATA ===== */
-    const VIDEOS = [
-      {
-        title: "Ohm's Law",
-        subject: "Electrical Engineering",
-        price: 0,
-        img: "http://img.youtube.com/vi/Qn1dQ0vf4N4/hqdefault.jpg",
-      },
-      {
-        title: "The Stack in a Microprocessor",
-        subject: "Computer Engineering",
-        price: 0,
-        img: "http://img.youtube.com/vi/d-2Peb3pCBg/hqdefault.jpg",
-      },
-      {
-        title: "Hydroelectric Power Plant",
-        subject: "Mechanical Engineering",
-        price: 0,
-        img: "http://img.youtube.com/vi/Uhjhufhg3Xk/hqdefault.jpg",
-      },
-      {
-        title: "Microprocessor 8086 Architecture",
-        subject: "Electronics",
-        price: 0,
-        img: "http://img.youtube.com/vi/RVNXZS-HOgw/hqdefault.jpg",
-      },
-      {
-        title: "Process Scheduling in Operating Systems",
-        subject: "Computer Engineering",
-        price: 49,
-        img: "http://img.youtube.com/vi/yIH8V62pHWk/hqdefault.jpg",
-      },
-    ];
-
-    let filteredVideos = [...VIDEOS];
-
-    /* ===== RENDER ===== */
-    function renderVideos() {
-      const container = document.getElementById("videoContainer");
-
-      if (filteredVideos.length === 0) {
-        container.innerHTML = "<p>No videos found</p>";
-        return;
+  `,
+          )
+          .join("");
       }
 
-      container.innerHTML = filteredVideos
-        .map(
-          (v) => `
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="${v.img}" />
-          ${v.price === 0 ? '<span class="free-chip">FREE</span>' : ""}
-        </div>
+      function openVideo(id) {
+        window.location.href = `video-detail.html?id=${id}`;
+      }
+      /* ===== FILTER ===== */
+      function applyFilters() {
+        const search = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
 
-        <div class="card-body">
-          <div class="card-title">${v.title}</div>
-          <div class="card-sub">Campus Funda | ${v.subject}</div>
-        </div>
+        const subject = document.getElementById("subjectFilter").value;
+        const type = document.getElementById("typeFilter").value;
 
-        <div class="card-footer">
-          <span class="badge">${v.subject}</span>
-          <span class="price-new">
-            ${v.price === 0 ? "FREE" : "₹" + v.price}
-          </span>
-        </div>
-      </div>
-    `,
-        )
-        .join("");
-    }
+        filteredVideos = VIDEOS.filter((v) => {
+          const matchSearch = v.title.toLowerCase().includes(search);
 
-    /* ===== FILTER ===== */
-    function applyFilters() {
-      const search = document
+          const matchSubject =
+            subject === "All Subjects" || v.subject === subject;
+
+          const matchType =
+            type === "All" ||
+            (type === "Free Only" && v.price === 0) ||
+            (type === "Premium" && v.price > 0);
+
+          return matchSearch && matchSubject && matchType;
+        });
+
+        renderVideos();
+      }
+
+      /* ===== EVENTS ===== */
+      document
         .getElementById("searchInput")
-        .value.toLowerCase();
+        .addEventListener("input", applyFilters);
 
-      const subject = document.getElementById("subjectFilter").value;
-      const type = document.getElementById("typeFilter").value;
+      document
+        .getElementById("subjectFilter")
+        .addEventListener("change", applyFilters);
 
-      filteredVideos = VIDEOS.filter((v) => {
-        const matchSearch = v.title.toLowerCase().includes(search);
+      document
+        .getElementById("typeFilter")
+        .addEventListener("change", applyFilters);
 
-        const matchSubject =
-          subject === "All Subjects" || v.subject === subject;
+      document
+        .getElementById("searchBtn")
+        .addEventListener("click", applyFilters);
 
-        const matchType =
-          type === "All" ||
-          (type === "Free Only" && v.price === 0) ||
-          (type === "Premium" && v.price > 0);
+      /* ===== CART ===== */
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+        const badge = document.getElementById("cartCount");
+        if (badge) badge.textContent = cart.length;
+      }
 
-        return matchSearch && matchSubject && matchType;
-      });
+      updateCartCount();
 
-      renderVideos();
-    }
+      /* ===== AUTH ===== */
+      const userKey = "cf_user";
+      const headerActions = document.getElementById("headerActions");
 
-    /* ===== EVENTS ===== */
-    document
-      .getElementById("searchInput")
-      .addEventListener("input", applyFilters);
+      function renderHeader() {
+        const user = JSON.parse(localStorage.getItem(userKey));
+        const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
 
-    document
-      .getElementById("subjectFilter")
-      .addEventListener("change", applyFilters);
+        if (user) {
+          const fullName = user.firstName + " " + (user.lastName || "");
 
-    document
-      .getElementById("typeFilter")
-      .addEventListener("change", applyFilters);
-
-    document
-      .getElementById("searchBtn")
-      .addEventListener("click", applyFilters);
-
-    /* ===== CART ===== */
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
-      const badge = document.getElementById("cartCount");
-      if (badge) badge.textContent = cart.length;
-    }
-
-    updateCartCount();
-
-    /* ===== AUTH ===== */
-    const userKey = "cf_user";
-    const headerActions = document.getElementById("headerActions");
-
-    function renderHeader() {
-      const user = JSON.parse(localStorage.getItem(userKey));
-      const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
-
-      if (user) {
-        const fullName = user.firstName + " " + (user.lastName || "");
-
-        headerActions.innerHTML = `
+          headerActions.innerHTML = `
         <div class="user-menu">
           <div class="user-trigger" id="userTrigger">👤 ${fullName}</div>
           <div class="dropdown-menu" id="dropdownMenu">
@@ -385,27 +403,27 @@
         </a>
       `;
 
-        // Logout
-        document.getElementById("logoutBtn").onclick = () => {
-          localStorage.removeItem(userKey);
-          location.reload();
-        };
+          // Logout
+          document.getElementById("logoutBtn").onclick = () => {
+            localStorage.removeItem(userKey);
+            location.reload();
+          };
 
-        // Dropdown toggle
-        const trigger = document.getElementById("userTrigger");
-        const menu = document.getElementById("dropdownMenu");
+          // Dropdown toggle
+          const trigger = document.getElementById("userTrigger");
+          const menu = document.getElementById("dropdownMenu");
 
-        trigger.onclick = (e) => {
-          e.stopPropagation();
-          menu.style.display =
-            menu.style.display === "flex" ? "none" : "flex";
-        };
+          trigger.onclick = (e) => {
+            e.stopPropagation();
+            menu.style.display =
+              menu.style.display === "flex" ? "none" : "flex";
+          };
 
-        document.addEventListener("click", () => {
-          menu.style.display = "none";
-        });
-      } else {
-        headerActions.innerHTML = `
+          document.addEventListener("click", () => {
+            menu.style.display = "none";
+          });
+        } else {
+          headerActions.innerHTML = `
         <a class="btn-login" href="login.html">👤 LOG IN</a>
         <a class="btn-signup" href="register.html">SIGN UP</a>
 
@@ -414,14 +432,13 @@
           <span class="cart-badge">${cart.length}</span>
         </a>
       `;
+        }
       }
-    }
 
-    renderHeader();
+      renderHeader();
 
-    /* ===== INIT ===== */
-    renderVideos();
-  </script>
-</body>
-
+      /* ===== INIT ===== */
+      renderVideos();
+    </script>
+  </body>
 </html>

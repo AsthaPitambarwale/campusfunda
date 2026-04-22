@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>MCQ Practice Tests – Campus Funda</title>
+  <link href="shared.css" rel="stylesheet" />
+  <style>
+    .mcqs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .mcqs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mcqs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .featured-banner {
+      background: var(--accent-grad);
+      border-radius: 14px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .featured-banner h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .featured-banner p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    }
+
+    .banner-icon {
+      font-size: 72px;
+      line-height: 1;
+    }
+
+    .featured-banner .btn-white {
+      background: #fff;
+      color: var(--accent2);
+      padding: 11px 26px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 16px;
+      transition: opacity 0.2s;
+    }
+
+    .featured-banner .btn-white:hover {
+      opacity: 0.9;
+      color: var(--accent2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="institute.html"> For Institutes </a>
+      <a href="author.html"> For Authors </a>
+      <a href="publisher.html"> For Publishers </a>
+    </div>
+  </div>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="index.html">
+          <img alt="Campus Funda" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png" />
+        </a>
+      </div>
+      <ul class="main-nav">
+        <li>
+          <a href="search.html"> Higher Education </a>
+        </li>
+        <li>
+          <a href="search.html"> Competitive Exams </a>
+        </li>
+        <li>
+          <a href="search.html"> School </a>
+        </li>
+        <li><a href="about-us.html">About-Us</a></li>
+      </ul>
+      <div class="header-actions" id="headerActions">
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html"> Home </a>
+        <span> › </span>
+        <span> MCQ Practice Tests </span>
+      </div>
+      <h1>MCQ Practice Tests</h1>
+      <p>
+        Test your knowledge with thousands of subject-specific multiple choice
+        questions.
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="featured-banner">
+      <div>
+        <h2>Boost Your Exam Score</h2>
+        <p>
+          Practice 10,000+ MCQs across 50+ engineering subjects. Get instant
+          feedback and detailed analytics.
+        </p>
+        <a class="btn-white" href="register.html"> Start Free Practice </a>
+      </div>
+      <div class="banner-icon">✍</div>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <input id="searchInput" placeholder="Search subject or topic..." type="text" />
+        <button>🔍</button>
+      </div>
+
+      <select id="universityFilter" class="filter-select">
+        <option>All Universities</option>
+        <option>PU</option>
+        <option>MU</option>
+        <option>GTU</option>
+        <option>MSBTE</option>
+        <option>DBATU</option>
+      </select>
+
+      <select id="branchFilter" class="filter-select">
+        <option>All Branches</option>
+        <option>Computer Engineering</option>
+        <option>Electronics</option>
+        <option>Mechanical</option>
+        <option>Civil</option>
+      </select>
+    </div>
+    <div class="sec-title">Available MCQ Tests</div>
+    <div class="sec-bar"></div>
+
+    <div class="mcqs-grid" id="mcqContainer"></div>
+  </div>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-col-about">
+        <img alt="Campus Funda" class="footer-logo"
+          src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png" />
+        <p class="footer-about-text">
+          Campus Funda – making learning easy, advanced &amp; accessible for
+          every student.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>QUICK LINKS</h5>
+        <div class="footer-bar"></div>
+        <p>
+          <a href="index.html"> Home </a>
+        </p>
+        <p>
+          <a href="search.html"> eBooks </a>
+        </p>
+        <p>
+          <a href="videos.html"> Videos </a>
+        </p>
+        <p>
+          <a href="mcqs.html"> MCQ's </a>
+        </p>
+        <p>
+          <a href="discussion-forum.html"> Discussion Forum </a>
+        </p>
+        <p>
+          <a href="about-us.html"> About Us </a>
+        </p>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h5>NEWSLETTER</h5>
+        <div class="footer-bar"></div>
+        <p>Email Address:</p>
+        <input placeholder="Your email address" type="email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2024
+        <span> Campus Funda </span>
+        – All Rights Reserved
+      </p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/campusfunda/" rel="noopener" target="_blank">
+          f
+        </a>
+        <a href="https://www.linkedin.com/company/campus-funda/" rel="noopener" target="_blank">
+          in
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    /* ===== DATA ===== */
+    const MCQS = [
+      {
+        title: "Embedded and Real Time Operating Systems",
+        author: "Harish G Narula",
+        university: ["PU", "MU", "GTU"],
+        branch: "Computer Engineering",
+        questions: 120,
+        time: 60,
+        rating: 4.7,
+        icon: "💻",
+      },
+      {
+        title: "Industrial Engineering (Elective)",
+        author: "Anand Bewoor",
+        university: ["PU", "MSBTE"],
+        branch: "Mechanical",
+        questions: 100,
+        time: 50,
+        rating: 4.5,
+        icon: "⚙",
+      },
+      {
+        title: "High Performance Computing (Elective)",
+        author: "Harish G Narula, Monali Shetty",
+        university: ["PU"],
+        branch: "Computer Engineering",
+        questions: 90,
+        time: 45,
+        rating: 4.6,
+        icon: "📈",
+      },
+      {
+        title: "Information Storage and Retrieval",
+        author: "Kavita Sultanpure",
+        university: ["PU"],
+        branch: "Computer Engineering",
+        questions: 80,
+        time: 40,
+        rating: 4.4,
+        icon: "📄",
+      },
+      {
+        title: "Database Management Systems",
+        author: "Prof. Mahesh Mali",
+        university: ["PU", "MU"],
+        branch: "Computer Engineering",
+        questions: 150,
+        time: 75,
+        rating: 4.8,
+        icon: "🔭",
+      },
+      {
+        title: "Theory of Computation",
+        author: "Dilip Kumar Sultania",
+        university: ["PU", "GTU"],
+        branch: "Computer Engineering",
+        questions: 110,
+        time: 55,
+        rating: 4.6,
+        icon: "▶",
+      },
+    ];
+
+    /* ===== STATE ===== */
+    let filteredMCQs = [...MCQS];
+
+    /* ===== RENDER ===== */
+    function renderMCQs() {
+      const container = document.getElementById("mcqContainer");
+      if (!container) return;
+
+      if (filteredMCQs.length === 0) {
+        container.innerHTML = "<p>No MCQs found</p>";
+        return;
+      }
+
+      container.innerHTML = filteredMCQs
+        .map(
+          (m) => `
+      <div class="mcq-card">
+        <div class="mcq-icon">${m.icon}</div>
+        <div class="mcq-title">${m.title}</div>
+        <div class="mcq-meta">
+          ${m.author} | ${m.university.join(" / ")}
+        </div>
+        <div class="mcq-stats">
+          <span>✍ ${m.questions} Questions</span>
+          <span>🕔 ${m.time} min</span>
+          <span>⭐ ${m.rating}</span>
+        </div>
+        <a class="start-btn" href="mcqs.html">Start Test</a>
+      </div>
+    `,
+        )
+        .join("");
+    }
+
+    /* ===== FILTER ===== */
+    function applyFilters() {
+      const search =
+        document.getElementById("searchInput")?.value.toLowerCase() || "";
+      const uni =
+        document.getElementById("universityFilter")?.value ||
+        "All Universities";
+      const branch =
+        document.getElementById("branchFilter")?.value || "All Branches";
+
+      filteredMCQs = MCQS.filter((m) => {
+        const matchSearch =
+          m.title.toLowerCase().includes(search) ||
+          m.author.toLowerCase().includes(search);
+
+        const matchUniversity =
+          uni === "All Universities" || m.university.includes(uni);
+
+        const matchBranch = branch === "All Branches" || m.branch === branch;
+
+        return matchSearch && matchUniversity && matchBranch;
+      });
+
+      renderMCQs();
+    }
+
+    /* ===== EVENTS ===== */
+    document
+      .getElementById("searchInput")
+      ?.addEventListener("input", applyFilters);
+    document
+      .getElementById("universityFilter")
+      ?.addEventListener("change", applyFilters);
+    document
+      .getElementById("branchFilter")
+      ?.addEventListener("change", applyFilters);
+
+    /* ===== CART ===== */
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+      const badge = document.getElementById("cartCount");
+      if (badge) badge.textContent = cart.length;
+    }
+
+    /* ===== INIT ===== */
+    renderMCQs();
+    updateCartCount();
+
+    /* ================= AUTH ================= */
+    const userKey = "cf_user";
+    const headerActions = document.getElementById("headerActions");
+
+    function renderHeader() {
+      const user = JSON.parse(localStorage.getItem(userKey));
+      const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+
+      if (!headerActions) return;
+
+      if (user) {
+        const fullName = user.firstName + " " + (user.lastName || "");
+
+        headerActions.innerHTML = `
+        <div class="user-menu">
+          <div class="user-trigger" id="userTrigger">
+            👤 ${fullName}
+          </div>
+
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-header">
+              <strong>${fullName}</strong><br>
+              <span>${user.email}</span>
+            </div>
+
+            <a href="#">My Profile</a>
+            <a href="#">My Orders</a>
+            <hr>
+            <a href="#" id="logoutBtn">Logout</a>
+          </div>
+        </div>
+
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount">${cart.length}</span>
+        </a>
+      `;
+
+        const trigger = document.getElementById("userTrigger");
+        const menu = document.getElementById("dropdownMenu");
+
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          menu.style.display =
+            menu.style.display === "flex" ? "none" : "flex";
+        });
+
+        document.addEventListener("click", () => {
+          menu.style.display = "none";
+        });
+
+        menu.addEventListener("click", (e) => e.stopPropagation());
+
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+          localStorage.removeItem(userKey);
+          window.location.reload();
+        });
+      } else {
+        headerActions.innerHTML = `
+        <a class="btn-login" href="login.html"> 👤 LOG IN </a>
+        <a class="btn-signup" href="register.html"> SIGN UP </a>
+
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount">${cart.length}</span>
+        </a>
+      `;
+      }
+    }
+
+    renderHeader();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile – Campus Funda</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      background: #0f1115;
+      color: #e6e6e6;
+      font-family: system-ui;
+    }
+
+    :root {
+      --accent-grad: linear-gradient(135deg,#0ab4b5,#7c5cff);
+      --bg-card: #151922;
+      --border: #232838;
+      --text-muted: #9aa4b2;
+    }
+
+    .profile-box {
+      max-width: 800px;
+      margin: 60px auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 90%;
+      padding: 11px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0f131b;
+      color: #fff;
+    }
+
+    input:disabled {
+      opacity: 0.6;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent-grad);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      background: rgba(10,180,181,0.15);
+      color: #0ab4b5;
+      border: 1px solid rgba(10,180,181,0.3);
+      margin: 6px 0px 6px 0px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="profile-box">
+  <h2>My Profile</h2>
+
+  <div class="badge" id="roleBadge"></div>
+
+  <div class="grid">
+    <div class="field">
+      <label>First Name</label>
+      <input id="firstName" />
+    </div>
+
+    <div class="field">
+      <label>Last Name</label>
+      <input id="lastName" />
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="email" disabled />
+    </div>
+
+    <div class="field">
+      <label>Phone</label>
+      <input id="phone" />
+    </div>
+
+    <div class="field">
+      <label>University</label>
+      <input id="university" />
+    </div>
+  </div>
+
+  <button class="btn" onclick="saveProfile()">Save Changes</button>
+</div>
+
+<script>
+  const userKey = "cf_user";
+
+  function loadProfile() {
+    const user = JSON.parse(localStorage.getItem(userKey));
+
+    if (!user) {
+      alert("Please login first");
+      window.location.href = "login.html";
+      return;
+    }
+
+    document.getElementById("firstName").value = user.firstName || "";
+    document.getElementById("lastName").value = user.lastName || "";
+    document.getElementById("email").value = user.email || "";
+    document.getElementById("phone").value = user.phone || "";
+    document.getElementById("university").value = user.university || "";
+
+    document.getElementById("roleBadge").innerText =
+      "Role: " + (user.role || "Student");
+  }
+
+  function saveProfile() {
+    const user = JSON.parse(localStorage.getItem(userKey));
+
+    user.firstName = document.getElementById("firstName").value;
+    user.lastName = document.getElementById("lastName").value;
+    user.phone = document.getElementById("phone").value;
+    user.university = document.getElementById("university").value;
+
+    localStorage.setItem(userKey, JSON.stringify(user));
+
+    // also update in users list
+    let users = JSON.parse(localStorage.getItem("cf_users")) || [];
+    users = users.map(u => u.email === user.email ? user : u);
+    localStorage.setItem("cf_users", JSON.stringify(users));
+
+    alert("Profile updated successfully!");
+  }
+
+  loadProfile();
+</script>
+
+</body>
+</html>

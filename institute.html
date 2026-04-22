@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>For Institutes – Campus Funda</title>
+    <link href="shared.css" rel="stylesheet" />
+    <style>
+      .promo-hero {
+        background: linear-gradient(
+          135deg,
+          #0f1117 0%,
+          #1a1d2e 60%,
+          rgba(10, 180, 181, 0.1) 100%
+        );
+        padding: 70px 30px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+      }
+      .promo-hero h1 {
+        font-size: 46px;
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1.2;
+        margin-bottom: 18px;
+      }
+      .promo-hero h1 span {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .promo-hero p {
+        font-size: 17px;
+        color: var(--text-muted);
+        max-width: 580px;
+        margin: 0 auto 32px;
+        line-height: 1.7;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-cta-prime {
+        background: var(--accent-grad);
+        color: #fff;
+        padding: 15px 36px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+      .btn-cta-prime:hover {
+        opacity: 0.88;
+        transform: scale(1.02);
+        color: #fff;
+      }
+      .btn-cta-outline {
+        background: none;
+        color: var(--accent);
+        padding: 15px 36px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        border: 2px solid var(--accent);
+        transition: all 0.2s;
+      }
+      .btn-cta-outline:hover {
+        background: rgba(10, 180, 181, 0.1);
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-bottom: 50px;
+      }
+      .benefit-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 30px 24px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .benefit-card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+        transform: translateY(-3px);
+      }
+      .benefit-icon {
+        font-size: 36px;
+        margin-bottom: 16px;
+      }
+      .benefit-card h4 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+      .benefit-card p {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+      .plan-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-bottom: 50px;
+      }
+      .plan-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 32px 26px;
+        text-align: center;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .plan-card.featured {
+        border-color: var(--accent);
+        box-shadow:
+          0 0 0 1px var(--accent),
+          0 12px 40px rgba(10, 180, 181, 0.15);
+      }
+      .plan-card.featured::before {
+        content: "POPULAR";
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--accent-grad);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        padding: 5px 14px;
+        border-bottom-left-radius: 10px;
+        letter-spacing: 1px;
+      }
+      .plan-card:hover:not(.featured) {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
+      .plan-name {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .plan-price {
+        font-size: 36px;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      .plan-price span {
+        font-size: 16px;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+      .plan-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+      }
+      .plan-features {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 28px;
+      }
+      .plan-features li {
+        font-size: 13px;
+        color: var(--text-secondary);
+        padding: 7px 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .plan-features li:last-child {
+        border-bottom: none;
+      }
+      .plan-features li::before {
+        content: "✓";
+        color: var(--accent);
+        font-weight: 900;
+      }
+      .plan-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: var(--accent-grad);
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        transition: opacity 0.2s;
+        border: none;
+        cursor: pointer;
+      }
+      .plan-btn:hover {
+        opacity: 0.88;
+        color: #fff;
+      }
+      .institute-form {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 44px;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+      .institute-form h2 {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .institute-form > p {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+      }
+      .partner-logos {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 50px;
+      }
+      .partner-chip {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 30px;
+        padding: 10px 22px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        transition: all 0.2s;
+      }
+      .partner-chip:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a href="institute.html" style="background: rgba(0, 0, 0, 0.2)">
+          For Institutes
+        </a>
+        <a href="author.html"> For Authors </a>
+        <a href="publisher.html"> For Publishers </a>
+      </div>
+    </div>
+    <header>
+      <div class="header-inner">
+        <div class="logo-area">
+          <a href="index.html">
+            <img
+              alt="Campus Funda"
+              src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png"
+            />
+          </a>
+        </div>
+        <ul class="main-nav">
+          <li>
+            <a href="search.html"> Higher Education </a>
+          </li>
+          <li>
+            <a href="search.html"> Competitive Exams </a>
+          </li>
+          <li>
+            <a href="search.html"> School </a>
+          </li>
+          <li><a href="about-us.html">About-Us</a></li>
+        </ul>
+        <div class="header-actions" id="headerActions">
+                   
+          <a class="cart-btn" href="cart.html">
+            🛒
+            <span class="cart-badge" id="cartCount"> 0 </span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <div class="promo-hero">
+      <h1>
+        Empower Your Students.
+        <br />
+        <span> Elevate Your Institution. </span>
+      </h1>
+      <p>
+        Provide your students with access to thousands of eBooks, MCQ tests, and
+        video lectures — all syllabus-aligned for your university. Institutional
+        plans with bulk pricing available.
+      </p>
+      <div class="hero-cta">
+        <a class="btn-cta-prime" href="#register-form">
+          🏫 Register Your Institute
+        </a>
+        <a class="btn-cta-outline" href="about-us.html"> Download Brochure </a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sec-title" style="text-align: center">
+        Why Partner with Campus Funda?
+      </div>
+      <div class="sec-bar" style="margin: 0 auto 32px"></div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📚</div>
+          <h4>Syllabus-Aligned Library</h4>
+          <p>
+            Give students instant access to a curated digital library aligned
+            with your university's exact syllabus — from semester 1 to final
+            year.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h4>Student Performance Analytics</h4>
+          <p>
+            Faculty and administrators get a dashboard showing MCQ scores,
+            reading activity, and engagement metrics for every enrolled student.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💸</div>
+          <h4>Bulk Institutional Pricing</h4>
+          <p>
+            Significant cost savings on per-student licensing versus individual
+            purchases. Flexible payment terms for educational institutions.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <h4>Mobile Access for All</h4>
+          <p>
+            Students access content on any device — smartphones, tablets, or
+            laptops — with or without internet connectivity through our offline
+            mode.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎓</div>
+          <h4>Exam Preparation Tools</h4>
+          <p>
+            Reduce exam stress with university-specific MCQ banks, solved
+            question papers, and practice tests. Boost pass rates
+            institution-wide.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛠</div>
+          <h4>LMS Integration</h4>
+          <p>
+            Integrate Campus Funda content with your existing Learning
+            Management System via API or SCORM packages for a seamless
+            experience.
+          </p>
+        </div>
+      </div>
+      <div class="sec-title" style="text-align: center">
+        Institutional Plans
+      </div>
+      <div class="sec-bar" style="margin: 0 auto 32px"></div>
+      <div class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">
+            ₹99
+            <span> / student / year </span>
+          </div>
+          <div class="plan-desc">For small colleges up to 200 students</div>
+          <ul class="plan-features">
+            <li>Access to full eBook library</li>
+            <li>MCQ practice tests</li>
+            <li>Basic analytics dashboard</li>
+            <li>Email support</li>
+          </ul>
+          <a class="plan-btn" href="#register-form"> Get Started </a>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-name">Professional</div>
+          <div class="plan-price">
+            ₹79
+            <span> / student / year </span>
+          </div>
+          <div class="plan-desc">For mid-size institutes 200–1000 students</div>
+          <ul class="plan-features">
+            <li>All Starter features</li>
+            <li>Video lecture library</li>
+            <li>Advanced analytics &amp; reports</li>
+            <li>Discussion forum access</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <a class="plan-btn" href="#register-form"> Get Started </a>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price">Custom</div>
+          <div class="plan-desc">
+            For universities &amp; large campuses 1000+
+          </div>
+          <ul class="plan-features">
+            <li>All Professional features</li>
+            <li>Custom branding / white-label</li>
+            <li>LMS API integration</li>
+            <li>On-site training &amp; onboarding</li>
+            <li>SLA &amp; 24/7 support</li>
+          </ul>
+          <a class="plan-btn" href="#register-form"> Contact Sales </a>
+        </div>
+      </div>
+      <div class="sec-title" style="text-align: center">
+        Trusted by Leading Institutions
+      </div>
+      <div class="sec-bar" style="margin: 0 auto 28px"></div>
+      <div class="partner-logos">
+        <span class="partner-chip"> Pune University </span>
+        <span class="partner-chip"> Mumbai University </span>
+        <span class="partner-chip"> GTU </span>
+        <span class="partner-chip"> MSBTE </span>
+        <span class="partner-chip"> DBATU </span>
+        <span class="partner-chip"> SPPU </span>
+        <span class="partner-chip"> COEP </span>
+        <span class="partner-chip"> VIT Pune </span>
+        <span class="partner-chip"> Symbiosis Institute </span>
+      </div>
+      <div class="institute-form" id="register-form">
+        <h2>🏫 Register Your Institute</h2>
+        <p>
+          Fill in the form and our institutional sales team will get back to you
+          within 24 hours.
+        </p>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label> Institute Name * </label>
+              <input
+                placeholder="e.g. COEP Technological University"
+                type="text"
+              />
+            </div>
+            <div class="form-group">
+              <label> Contact Person * </label>
+              <input placeholder="Principal / HOD / Coordinator" type="text" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label> Official Email * </label>
+              <input placeholder="contact@institute.edu.in" type="email" />
+            </div>
+            <div class="form-group">
+              <label> Phone Number * </label>
+              <input placeholder="+91 98765 43210" type="tel" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label> University Affiliation </label>
+              <select>
+                <option>Pune University (SPPU)</option>
+                <option>Mumbai University</option>
+                <option>GTU</option>
+                <option>MSBTE</option>
+                <option>DBATU</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label> Number of Students </label>
+              <select>
+                <option>Up to 200</option>
+                <option>200 – 500</option>
+                <option>500 – 1000</option>
+                <option>1000 – 5000</option>
+                <option>5000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label> Interested Plan </label>
+            <select>
+              <option>Starter (₹99/student/year)</option>
+              <option>Professional (₹79/student/year)</option>
+              <option>Enterprise (Custom Pricing)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label> Additional Requirements </label>
+            <textarea
+              placeholder="LMS integration needs, custom features, special syllabus requirements..."
+              style="
+                width: 100%;
+                background: var(--bg-secondary);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 11px 14px;
+                color: var(--text-primary);
+                font-size: 14px;
+                outline: none;
+                resize: vertical;
+                min-height: 90px;
+                font-family: inherit;
+              "
+            ></textarea>
+          </div>
+          <button class="btn-primary" type="submit" id="authorSubmitBtn">
+            Submit Inquirey
+          </button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-main">
+        <div class="footer-col-about">
+          <img
+            alt="Campus Funda"
+            class="footer-logo"
+            src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png"
+          />
+          <p class="footer-about-text">
+            Campus Funda – making learning easy, advanced &amp; accessible for
+            every student.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>QUICK LINKS</h5>
+          <div class="footer-bar"></div>
+          <p>
+            <a href="index.html"> Home </a>
+          </p>
+          <p>
+            <a href="publisher.html"> For Publishers </a>
+          </p>
+          <p>
+            <a href="author.html"> For Authors </a>
+          </p>
+          <p>
+            <a href="institute.html"> For Institutes </a>
+          </p>
+          <p>
+            <a href="about-us.html"> About Us </a>
+          </p>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h5>NEWSLETTER</h5>
+          <div class="footer-bar"></div>
+          <p>Email Address:</p>
+          <input placeholder="Your email address" type="email" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2024
+          <span> Campus Funda </span>
+          – All Rights Reserved
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/campusfunda/" target="_blank">
+            f
+          </a>
+          <a
+            href="https://www.linkedin.com/company/campus-funda/"
+            target="_blank"
+          >
+            in
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const c = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+      document.getElementById("cartCount").textContent = c.length;
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Thank you for your interest! Our team will contact you within 48 hours.",
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Sign Up – Campus Funda</title>
+  <link href="shared.css" rel="stylesheet" />
+  <style>
+    .auth-wrap {
+      min-height: calc(100vh - 114px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      background:
+        radial-gradient(ellipse at 30% 40%,
+          rgba(10, 180, 181, 0.07) 0%,
+          transparent 60%),
+        radial-gradient(ellipse at 70% 70%,
+          rgba(21, 115, 193, 0.07) 0%,
+          transparent 60%);
+    }
+
+    .strength-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border);
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(to right, #f33a6d, #f5a623);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 6px 0 16px;
+    }
+
+    .terms-check input {
+      margin-top: 2px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .terms-check a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="institute.html"> For Institutes </a>
+      <a href="author.html"> For Authors </a>
+      <a href="publisher.html"> For Publishers </a>
+    </div>
+  </div>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="index.html">
+          <img alt="Campus Funda" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png" />
+        </a>
+      </div>
+      <ul class="main-nav">
+        <li>
+          <a href="search.html"> Higher Education </a>
+        </li>
+        <li>
+          <a href="search.html"> Competitive Exams </a>
+        </li>
+        <li>
+          <a href="search.html"> School </a>
+        </li>
+        <li><a href="about-us.html">About-Us</a></li>
+      </ul>
+      <div class="header-actions" id="headerActions">
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount"> 0 </span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="auth-wrap">
+    <div class="form-card" style="max-width: 520px">
+      <h2>Create Your Account</h2>
+      <p class="form-sub">Join 500,000+ students on Campus Funda</p>
+      <div class="tabs-auth">
+        <div class="tab-auth active">Student</div>
+        <div class="tab-auth">Institute</div>
+        <div class="tab-auth">Publisher</div>
+      </div>
+      <div class="social-login" style="margin-bottom: 20px">
+        <button class="btn-social">🔍 Google</button>
+        <button class="btn-social">f Facebook</button>
+      </div>
+      <div class="divider">or sign up with email</div>
+      <form id="registerForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label> First Name </label>
+            <input id="firstName" placeholder="John" type="text" />
+          </div>
+          <div class="form-group">
+            <label> Last Name </label>
+            <input id="lastName" placeholder="Doe" type="text" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Email Address </label>
+          <input id="email" placeholder="you@example.com" type="email" />
+        </div>
+
+        <div class="form-group">
+          <label> Mobile Number </label>
+          <input id="phone" placeholder="+91 98765 43210" type="tel" />
+        </div>
+
+        <div class="form-group">
+          <label> University / College </label>
+          <select id="university">
+            <option value="">Select your university</option>
+            <option>Pune University (PU)</option>
+            <option>Mumbai University (MU)</option>
+            <option>Gujarat Technological University (GTU)</option>
+            <option>MSBTE</option>
+            <option>DBATU</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label> Password </label>
+          <input id="password" placeholder="Create a strong password" type="password" />
+        </div>
+
+        <div class="form-group">
+          <label> Confirm Password </label>
+          <input id="confirmPassword" placeholder="Repeat your password" type="password" />
+        </div>
+
+        <div class="terms-check">
+          <input id="terms" type="checkbox" />
+          <label for="terms">
+            I agree to the
+            <a href="terms-conditions.html"> Terms &amp; Conditions </a>
+            and
+            <a href="privacy-policy.html"> Privacy Policy </a>
+          </label>
+        </div>
+
+        <button class="btn-primary" type="submit">CREATE ACCOUNT</button>
+      </form>
+      <div class="form-footer">
+        Already have an account?
+        <a href="login.html"> Log In </a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="max-width: 1200px; margin: 0 auto">
+      <p class="footer-copy">
+        © 2024
+        <span> Campus Funda </span>
+        – All Rights Reserved
+      </p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/campusfunda/" rel="noopener" target="_blank">
+          f
+        </a>
+        <a href="https://www.linkedin.com/company/campus-funda/" rel="noopener" target="_blank">
+          in
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const userKey = "cf_user";
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem("cf_cart") || "[]");
+    }
+
+    function renderHeader() {
+      const header = document.getElementById("headerActions");
+      const user = JSON.parse(localStorage.getItem(userKey));
+      const cart = getCart();
+
+      if (user) {
+        header.innerHTML = `
+        <div class="user-menu">👤 ${user.firstName}</div>
+        <a class="cart-btn" href="cart.html">
+          🛒 <span class="cart-badge">${cart.length}</span>
+        </a>
+      `;
+      } else {
+        header.innerHTML = `
+        <a class="btn-login" href="login.html">👤 LOG IN</a>
+        <a class="btn-signup" href="register.html">SIGN UP</a>
+        <a class="cart-btn" href="cart.html">
+          🛒 <span class="cart-badge">${cart.length}</span>
+        </a>
+      `;
+      }
+    }
+
+    let selectedRole = "Student";
+
+    document.querySelectorAll(".tab-auth").forEach((tab) => {
+      tab.addEventListener("click", function () {
+        document
+          .querySelectorAll(".tab-auth")
+          .forEach((t) => t.classList.remove("active"));
+
+        this.classList.add("active");
+        selectedRole = this.innerText.trim();
+
+        console.log("Selected Role:", selectedRole);
+      });
+    });
+
+    document.querySelectorAll(".btn-social").forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const type = this.innerText.toLowerCase();
+
+        if (type.includes("google")) {
+          alert("Google login integration coming soon 🚀");
+        } else if (type.includes("facebook")) {
+          alert("Facebook login integration coming soon 🚀");
+        }
+      });
+    });
+
+    document
+      .getElementById("registerForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document
+          .getElementById("email")
+          .value.trim()
+          .toLowerCase();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const university = document.getElementById("university").value;
+        const terms = document.getElementById("terms").checked;
+
+        if (!firstName || !email || !password) {
+          alert("Please fill all required fields");
+          return;
+        }
+
+        if (password.length < 6) {
+          alert("Password must be at least 6 characters");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match");
+          return;
+        }
+
+        if (!terms) {
+          alert("Please accept Terms & Conditions");
+          return;
+        }
+
+        let users = JSON.parse(localStorage.getItem("cf_users")) || [];
+
+        if (users.find((u) => u.email === email)) {
+          alert("User already exists");
+          return;
+        }
+
+        const newUser = {
+          id: Date.now(),
+          firstName,
+          lastName,
+          email,
+          phone,
+          password,
+          university,
+          role: selectedRole,
+        };
+
+        users.push(newUser);
+        localStorage.setItem("cf_users", JSON.stringify(users));
+
+        localStorage.setItem(userKey, JSON.stringify(newUser));
+
+        alert("Account created successfully!");
+        window.location.href = "index.html";
+      });
+
+    renderHeader();
+  </script>
+</body>
+
+</html>

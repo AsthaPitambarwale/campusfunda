@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Log In – Campus Funda</title>
+  <link href="shared.css" rel="stylesheet" />
+
+  <style>
+    .auth-wrap {
+      min-height: calc(100vh - 114px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      background:
+        radial-gradient(ellipse at 30% 40%,
+          rgba(10, 180, 181, 0.07) 0%,
+          transparent 60%),
+        radial-gradient(ellipse at 70% 70%,
+          rgba(21, 115, 193, 0.07) 0%,
+          transparent 60%);
+    }
+
+    .forgot {
+      text-align: right;
+      margin-top: -10px;
+      margin-bottom: 14px;
+    }
+
+    .forgot a {
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .forgot a:hover {
+      text-decoration: underline;
+    }
+
+    .login-banner {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .login-banner .icon {
+      font-size: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="institute.html">For Institutes</a>
+      <a href="author.html">For Authors</a>
+      <a href="publisher.html">For Publishers</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="index.html">
+          <img alt="Campus Funda" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png" />
+        </a>
+      </div>
+
+      <ul class="main-nav">
+        <li><a href="search.html">Higher Education</a></li>
+        <li><a href="search.html">Competitive Exams</a></li>
+        <li><a href="search.html">School</a></li>
+        <li><a href="about-us.html">About-Us</a></li>
+      </ul>
+
+      <div class="header-actions" id="headerActions"></div>
+    </div>
+  </header>
+
+  <!-- LOGIN FORM -->
+  <div class="auth-wrap">
+    <div class="form-card">
+      <h2>Welcome Back!</h2>
+      <p class="form-sub">Log in to access your study materials</p>
+
+      <div class="login-banner">
+        <span class="icon">🎓</span>
+        <span>
+          Access your eBooks, MCQs, Videos and Discussion Forum all in one place.
+        </span>
+      </div>
+
+      <div class="social-login" style="margin-bottom: 20px">
+        <button class="btn-social">🔍 Google</button>
+        <button class="btn-social">f Facebook</button>
+      </div>
+
+      <div class="divider">or log in with email</div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input id="email" placeholder="you@example.com" type="email" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input id="password" placeholder="Your password" type="password" required />
+        </div>
+
+        <div class="forgot">
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button class="btn-primary" type="submit">LOG IN</button>
+      </form>
+
+      <div class="form-footer" style="margin-top: 18px">
+        Don't have an account?
+        <a href="register.html">Sign Up Free</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom" style="max-width: 1200px; margin: 0 auto">
+      <p class="footer-copy">
+        © 2024 <span>Campus Funda</span> – All Rights Reserved
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const userKey = "cf_user";
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem("cf_cart") || "[]");
+    }
+
+    function renderHeader() {
+      const header = document.getElementById("headerActions");
+      const user = JSON.parse(localStorage.getItem(userKey));
+      const cart = getCart();
+
+      if (user) {
+        header.innerHTML = `
+            <div class="user-menu">👤 ${user.name}</div>
+            <a class="cart-btn" href="cart.html">
+              🛒 <span class="cart-badge">${cart.length}</span>
+            </a>
+          `;
+      } else {
+        header.innerHTML = `
+            <a class="btn-login" href="login.html">👤 LOG IN</a>
+            <a class="btn-signup" href="register.html">SIGN UP</a>
+            <a class="cart-btn" href="cart.html">
+              🛒 <span class="cart-badge">${cart.length}</span>
+            </a>
+          `;
+      }
+    }
+
+    // LOGIN LOGIC
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
+
+      const users = JSON.parse(localStorage.getItem("cf_users")) || [];
+
+      if (users.length === 0) {
+        alert("No users found. Please register first.");
+        return;
+      }
+
+      const foundUser = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (!foundUser) {
+        alert("Invalid email or password");
+        return;
+      }
+
+      // SAVE USER SESSION
+      localStorage.setItem(userKey, JSON.stringify(foundUser));
+
+      alert("Login successful!");
+      window.location.href = "index.html";
+    });
+
+    renderHeader();
+  </script>
+</body>
+
+</html>

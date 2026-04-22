@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us – Campus Funda</title>
+    <link href="shared.css" rel="stylesheet" />
+
+    <style>
+      .mission-section {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 50px 60px;
+        margin-bottom: 50px;
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .mission-section::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(rgba(10, 180, 181, 0.12), transparent 70%);
+      }
+      .mission-text {
+        flex: 1;
+      }
+      .mission-label {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .mission-title {
+        font-size: 34px;
+        font-weight: 800;
+        color: var(--text-primary);
+        line-height: 1.3;
+        margin-bottom: 20px;
+      }
+      .mission-desc {
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+      .mission-visual {
+        flex: 0 0 320px;
+        text-align: center;
+      }
+      .big-icon {
+        font-size: 100px;
+        background: var(--accent-grad);
+        -webkit-text-fill-color: transparent;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        margin-bottom: 50px;
+      }
+
+      .timeline {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 40px;
+        margin-bottom: 50px;
+      }
+
+      .tl-item {
+        display: flex;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .tl-year {
+        flex: 0 0 80px;
+        font-size: 18px;
+        font-weight: 800;
+        background: var(--accent-grad);
+        -webkit-text-fill-color: transparent;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 40px;
+      }
+
+      .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px;
+        text-align: center;
+        border-bottom: 3px solid var(--accent);
+      }
+
+      @media (max-width: 768px) {
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a href="institute.html">For Institutes</a>
+        <a href="author.html">For Authors</a>
+        <a href="publisher.html">For Publishers</a>
+      </div>
+    </div>
+
+    <header>
+      <div class="header-inner">
+        <div class="logo-area">
+          <a href="index.html">
+            <img
+              src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png"
+              alt="Campus Funda"
+            />
+          </a>
+        </div>
+
+        <ul class="main-nav">
+          <li><a href="search.html">Higher Education</a></li>
+          <li><a href="search.html">Competitive Exams</a></li>
+          <li><a href="search.html">School</a></li>
+          <li><a href="about-us.html">About-Us</a></li>
+        </ul>
+
+        <div class="header-actions" id="headerActions"></div>
+      </div>
+    </header>
+
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> › <span>About Us</span>
+        </div>
+        <h1>About Campus Funda</h1>
+        <p>Empowering students with smart, accessible learning since 2012.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="num">500K+</div>
+          <div class="lbl">Students</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">200K+</div>
+          <div class="lbl">App Downloads</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">100K+</div>
+          <div class="lbl">Study Resources</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">12+</div>
+          <div class="lbl">Years of Excellence</div>
+        </div>
+      </div>
+      <div class="mission-section">
+        <div class="mission-text">
+          <div class="mission-label">Our Mission</div>
+          <h2 class="mission-title">
+            Making Quality Education Accessible to Every Student
+          </h2>
+          <p class="mission-desc">
+            Campus Funda has been focused on making learning easy, advanced
+            &amp; accessible for over a decade. We accomplish this by continuous
+            innovation and research towards understanding how learning happens.
+            From eBooks and video lectures to MCQ tests and discussion forums,
+            everything you need to score better is right here.
+          </p>
+        </div>
+        <div class="mission-visual">
+          <div class="big-icon">🎓</div>
+        </div>
+      </div>
+      <div class="sec-title">What We Offer</div>
+      <div class="sec-bar"></div>
+      <div class="about-feature">
+        <div class="about-icon">📚</div>
+        <div>
+          <h4>Digital eBooks</h4>
+          <p>
+            Syllabus-specific eBooks from top publishers like Techknowledge
+            Publication, Idol Publication, and more — available for Pune
+            University, Mumbai University, GTU, MSBTE, and DBATU.
+          </p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-icon">✍</div>
+        <div>
+          <h4>MCQ Practice Tests</h4>
+          <p>
+            Thousands of multiple-choice questions aligned with your university
+            syllabus. Practice, get instant feedback, and track your performance
+            with detailed reports.
+          </p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-icon">🎥</div>
+        <div>
+          <h4>Video Lectures</h4>
+          <p>
+            High-quality video lectures on core engineering and science topics —
+            from Ohm's Law to Microprocessor Architecture — completely free to
+            get you started.
+          </p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-icon">💬</div>
+        <div>
+          <h4>Discussion Forum</h4>
+          <p>
+            Get your academic doubts resolved by peers, experts, and faculty.
+            Post questions, share answers, and build your academic community on
+            Campus Funda.
+          </p>
+        </div>
+      </div>
+      <div class="timeline">
+        <h3>Our Journey</h3>
+        <div class="tl-item">
+          <div class="tl-year">2012</div>
+          <div class="tl-content">
+            <h4>Founded in Pune</h4>
+            <p>
+              Campus Funda launched with a vision to digitize study materials
+              for engineering students in Maharashtra.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2015</div>
+          <div class="tl-content">
+            <h4>MCQ Platform Launched</h4>
+            <p>
+              Introduced an interactive MCQ test platform covering all major
+              engineering subjects and universities.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2018</div>
+          <div class="tl-content">
+            <h4>Mobile App Released</h4>
+            <p>
+              Launched the Campus Funda mobile app on Google Play, reaching
+              100,000+ downloads in the first year.
+            </p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2022</div>
+          <div class="tl-content">
+            <h4>500,000 Students Milestone</h4>
+            <p>
+              Crossed half a million registered students across India with
+              100,000+ study resources available on the platform.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="sec-title">Meet the Team</div>
+      <div class="sec-bar"></div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">S</div>
+          <div class="team-name">Seema Kulkarni</div>
+          <div class="team-role">CEO &amp; Founder</div>
+          <div class="team-bio">
+            Visionary educator with 15+ years of experience in edtech and
+            academic publishing.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">R</div>
+          <div class="team-name">Rahul Desai</div>
+          <div class="team-role">CTO</div>
+          <div class="team-bio">
+            Tech leader who built the Campus Funda platform and mobile app
+            ecosystem from scratch.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">P</div>
+          <div class="team-name">Priya Sharma</div>
+          <div class="team-role">Head of Content</div>
+          <div class="team-bio">
+            Manages 100+ publisher relationships and maintains quality of all
+            study resources.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">A</div>
+          <div class="team-name">Amit Joshi</div>
+          <div class="team-role">Product Manager</div>
+          <div class="team-bio">
+            Drives product strategy and ensures the platform stays
+            student-focused and intuitive.
+          </div>
+        </div>
+      </div>
+      <div class="sec-title">Get In Touch</div>
+      <div class="sec-bar"></div>
+      <div class="contact-grid">
+        <div class="contact-box">
+          <div class="icon">📍</div>
+          <h4>Address</h4>
+          <p>
+            B/5 Maniratna Complex, Taware Colony, Aranyeshwar Chowk, Pune
+            411009, Maharashtra, India
+          </p>
+        </div>
+        <div class="contact-box">
+          <div class="icon">📞</div>
+          <h4>Phone</h4>
+          <p>8552912233</p>
+        </div>
+        <div class="contact-box">
+          <div class="icon">📧</div>
+          <h4>Email</h4>
+          <p>seema@campusfunda.com</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-main">
+        <div class="footer-col-about">
+          <img
+            src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png"
+            class="footer-logo"
+          />
+          <p>Campus Funda – making learning easy & accessible.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>QUICK LINKS</h5>
+          <div class="footer-bar"></div>
+          <p><a href="index.html">Home</a></p>
+          <p><a href="search.html">eBooks</a></p>
+          <p><a href="videos.html">Videos</a></p>
+          <p><a href="mcqs.html">MCQ's</a></p>
+          <p><a href="discussion-forum.html">Discussion Forum</a></p>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+          <h5>NEWSLETTER</h5>
+          <div class="footer-bar"></div>
+          <input type="email" placeholder="Your email" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Campus Funda – All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script>
+      const userKey = "cf_user";
+      const headerActions = document.getElementById("headerActions");
+
+      function renderHeader() {
+        const user = JSON.parse(localStorage.getItem(userKey));
+        const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+
+        if (user) {
+          const name = user.firstName + " " + (user.lastName || "");
+
+          headerActions.innerHTML = `
+            <div class="user-menu">
+              <div class="user-trigger">👤 ${name}</div>
+              <div class="dropdown-menu">
+                <strong>${name}</strong><br>
+                <span>${user.email}</span>
+                <hr>
+                <a href="#" id="logoutBtn">Logout</a>
+              </div>
+            </div>
+            <a class="cart-btn" href="cart.html">
+              🛒 <span class="cart-badge">${cart.length}</span>
+            </a>
+          `;
+
+          document.getElementById("logoutBtn").onclick = () => {
+            localStorage.removeItem(userKey);
+            location.reload();
+          };
+        } else {
+          headerActions.innerHTML = `
+            <a class="btn-login" href="login.html">👤 LOG IN</a>
+            <a class="btn-signup" href="register.html">SIGN UP</a>
+            <a class="cart-btn" href="cart.html">
+              🛒 <span class="cart-badge">${cart.length}</span>
+            </a>
+          `;
+        }
+      }
+
+      renderHeader();
+    </script>
+  </body>
+</html>

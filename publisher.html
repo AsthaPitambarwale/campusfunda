@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   For Publishers – Campus Funda
+  </title>
+  <link href="shared.css" rel="stylesheet"/>
+  <style>
+   .promo-hero {
+      background: linear-gradient(135deg, #0f1117 0%, #1a1d2e 60%, rgba(10,180,181,0.12) 100%);
+      padding: 70px 30px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .promo-hero h1 {
+      font-size: 46px; font-weight: 900; color: var(--text-primary);
+      line-height: 1.2; margin-bottom: 18px;
+    }
+    .promo-hero h1 span {
+      background: var(--accent-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .promo-hero p { font-size: 17px; color: var(--text-muted); max-width: 580px; margin: 0 auto 32px; line-height: 1.7; }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-prime {
+      background: var(--accent-grad); color: #fff;
+      padding: 15px 36px; border-radius: 10px;
+      font-size: 15px; font-weight: 700;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-cta-prime:hover { opacity: 0.88; transform: scale(1.02); color: #fff; }
+    .btn-cta-outline {
+      background: none; color: var(--accent);
+      padding: 15px 36px; border-radius: 10px;
+      font-size: 15px; font-weight: 700;
+      border: 2px solid var(--accent);
+      transition: all 0.2s;
+    }
+    .btn-cta-outline:hover { background: rgba(10,180,181,0.1); }
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+      margin-bottom: 50px;
+    }
+    .benefit-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 30px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .benefit-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+      transform: translateY(-3px);
+    }
+    .benefit-icon { font-size: 36px; margin-bottom: 16px; }
+    .benefit-card h4 { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+    .benefit-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .steps-section { margin-bottom: 50px; }
+    .step-item {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 28px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 14px; transition: border-color 0.2s;
+    }
+    .step-item:hover { border-color: var(--accent); }
+    .step-num {
+      flex: 0 0 52px; height: 52px; border-radius: 50%;
+      background: var(--accent-grad); color: #fff;
+      font-size: 22px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content h4 { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    .step-content p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+    .pub-register-form {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 44px; max-width: 680px; margin: 0 auto;
+    }
+    .pub-register-form h2 { font-size: 26px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
+    .pub-register-form p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .featured-pubs {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 50px;
+    }
+    .pub-chip {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 30px; padding: 10px 22px;
+      font-size: 13px; font-weight: 600; color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+    .pub-chip:hover { border-color: var(--accent); color: var(--accent); }
+  </style>
+  
+  
+ </head>
+ <body>
+  <div class="topbar">
+   <div class="topbar-inner">
+    <a href="institute.html">
+     For Institutes
+    </a>
+    <a href="author.html">
+     For Authors
+    </a>
+    <a href="publisher.html" style="background:rgba(0,0,0,0.2)">
+     For Publishers
+    </a>
+   </div>
+  </div>
+  <header>
+   <div class="header-inner">
+    <div class="logo-area">
+     <a href="index.html">
+      <img alt="Campus Funda" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png"/>
+     </a>
+    </div>
+    <ul class="main-nav">
+     <li>
+      <a href="search.html">
+       Higher Education
+      </a>
+     </li>
+     <li>
+      <a href="search.html">
+       Competitive Exams
+      </a>
+     </li>
+     <li>
+      <a href="search.html">
+       School
+      </a>
+     </li>
+     <li>
+      <a href="search.html">
+       General
+      </a>
+     </li>
+    </ul>
+    <div class="header-actions" id="headerActions">
+     <a class="btn-login" href="login.html">
+      👤 LOG IN
+     </a>
+     <a class="btn-signup" href="register.html">
+      SIGN UP
+     </a>
+     <a class="cart-btn" href="cart.html">
+      🛒
+      <span class="cart-badge" id="cartCount">
+       0
+      </span>
+     </a>
+    </div>
+   </div>
+  </header>
+  <div class="promo-hero">
+   <h1>
+    Publish Smarter.
+    <br/>
+    <span>
+     Reach More Students.
+    </span>
+   </h1>
+   <p>
+    Partner with Campus Funda to distribute your educational content to over 500,000 students across India. Maximize your reach, protect your IP, and earn more.
+   </p>
+   <div class="hero-cta">
+    <a class="btn-cta-prime" href="#register-form">
+     📄 Register as Publisher
+    </a>
+    <a class="btn-cta-outline" href="about-us.html">
+     Learn More
+    </a>
+   </div>
+  </div>
+  <div class="container">
+   <div class="sec-title" style="text-align:center">
+    Why Publish with Campus Funda?
+   </div>
+   <div class="sec-bar" style="margin:0 auto 32px">
+   </div>
+   <div class="benefits-grid">
+    <div class="benefit-card">
+     <div class="benefit-icon">
+      🌍
+     </div>
+     <h4>
+      Massive Reach
+     </h4>
+     <p>
+      Instantly reach 500,000+ active students across Pune University, Mumbai University, GTU, MSBTE, and DBATU through our platform and mobile app.
+     </p>
+    </div>
+    <div class="benefit-card">
+     <div class="benefit-icon">
+      🔒
+     </div>
+     <h4>
+      DRM Protection
+     </h4>
+     <p>
+      Your content is protected with industry-grade Digital Rights Management. Control who accesses your eBooks, how many devices, and for how long.
+     </p>
+    </div>
+    <div class="benefit-card">
+     <div class="benefit-icon">
+      📈
+     </div>
+     <h4>
+      Real-Time Analytics
+     </h4>
+     <p>
+      Access detailed dashboards showing book views, purchases, reader engagement, and revenue — all in real time from your publisher portal.
+     </p>
+    </div>
+    <div class="benefit-card">
+     <div class="benefit-icon">
+      💰
+     </div>
+     <h4>
+      Competitive Royalties
+     </h4>
+     <p>
+      Earn industry-leading royalties on every sale. Transparent pricing, prompt payments, and no hidden fees. Your success is our success.
+     </p>
+    </div>
+    <div class="benefit-card">
+     <div class="benefit-icon">
+      📱
+     </div>
+     <h4>
+      Mobile-First Platform
+     </h4>
+     <p>
+      Your content is available on our iOS and Android apps with 200,000+ downloads, giving students offline and online access anytime, anywhere.
+     </p>
+    </div>
+    <div class="benefit-card">
+     <div class="benefit-icon">
+      🤝
+     </div>
+     <h4>
+      Dedicated Support
+     </h4>
+     <p>
+      Our publisher success team helps you onboard, upload, format, and promote your content. We're with you every step of the way.
+     </p>
+    </div>
+   </div>
+   <div class="sec-title">
+    How It Works
+   </div>
+   <div class="sec-bar">
+   </div>
+   <div class="steps-section">
+    <div class="step-item">
+     <div class="step-num">
+      1
+     </div>
+     <div class="step-content">
+      <h4>
+       Register Your Publishing House
+      </h4>
+      <p>
+       Fill out the publisher registration form below with your organization details, tax information, and contact person. Our team reviews applications within 48 hours.
+      </p>
+     </div>
+    </div>
+    <div class="step-item">
+     <div class="step-num">
+      2
+     </div>
+     <div class="step-content">
+      <h4>
+       Upload Your Content
+      </h4>
+      <p>
+       Once approved, access the Publisher Portal to upload PDFs, set pricing, add metadata (title, author, ISBN, university, subject), and configure DRM settings.
+      </p>
+     </div>
+    </div>
+    <div class="step-item">
+     <div class="step-num">
+      3
+     </div>
+     <div class="step-content">
+      <h4>
+       Content Review &amp; Publishing
+      </h4>
+      <p>
+       Our editorial team reviews your content for quality and syllabus alignment within 5 business days. Approved content goes live on the platform immediately.
+      </p>
+     </div>
+    </div>
+    <div class="step-item">
+     <div class="step-num">
+      4
+     </div>
+     <div class="step-content">
+      <h4>
+       Earn &amp; Grow
+      </h4>
+      <p>
+       Track your sales and royalties in real time. Payments are processed monthly via NEFT/RTGS. Promote your catalog through our marketing programs to boost visibility.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="sec-title" style="text-align:center">
+    Our Publisher Partners
+   </div>
+   <div class="sec-bar" style="margin:0 auto 28px">
+   </div>
+   <div class="featured-pubs">
+    <span class="pub-chip">
+     Techknowledge Publication
+    </span>
+    <span class="pub-chip">
+     Idol Publication
+    </span>
+    <span class="pub-chip">
+     Nirali Prakashan
+    </span>
+    <span class="pub-chip">
+     Pragati Publication
+    </span>
+    <span class="pub-chip">
+     Technical Publication
+    </span>
+    <span class="pub-chip">
+     Wiley India
+    </span>
+    <span class="pub-chip">
+     Pearson Education
+    </span>
+    <span class="pub-chip">
+     S. Chand &amp; Company
+    </span>
+   </div>
+   <div class="pub-register-form" id="register-form">
+    <h2>
+     📄 Register as a Publisher
+    </h2>
+    <p>
+     Fill in the form and our team will reach out within 48 hours.
+    </p>
+    <form>
+     <div class="form-row">
+      <div class="form-group">
+       <label>
+        Publishing House Name *
+       </label>
+       <input placeholder="e.g. Techknowledge Publication" type="text"/>
+      </div>
+      <div class="form-group">
+       <label>
+        Contact Person *
+       </label>
+       <input placeholder="Full name" type="text"/>
+      </div>
+     </div>
+     <div class="form-row">
+      <div class="form-group">
+       <label>
+        Email Address *
+       </label>
+       <input placeholder="publisher@example.com" type="email"/>
+      </div>
+      <div class="form-group">
+       <label>
+        Phone Number *
+       </label>
+       <input placeholder="+91 98765 43210" type="tel"/>
+      </div>
+     </div>
+     <div class="form-group">
+      <label>
+       Website / Catalog URL
+      </label>
+      <input placeholder="https://yourpublisher.com" type="url"/>
+     </div>
+     <div class="form-group">
+      <label>
+       Number of Titles to Publish
+      </label>
+      <select>
+       <option>
+        1 – 10 titles
+       </option>
+       <option>
+        11 – 50 titles
+       </option>
+       <option>
+        51 – 100 titles
+       </option>
+       <option>
+        100+ titles
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <label>
+       Brief Description of Your Catalog
+      </label>
+      <textarea placeholder="Tell us about your publications, universities covered, subjects..." style="width:100%;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text-primary);font-size:14px;outline:none;resize:vertical;min-height:90px;font-family:inherit"></textarea>
+     </div>
+     <button class="btn-primary" onclick="event.preventDefault();alert('Thank you for your interest! Our team will contact you within 48 hours.')" type="submit">
+      Submit Application
+     </button>
+    </form>
+   </div>
+  </div>
+  <footer>
+   <div class="footer-main">
+    <div class="footer-col-about">
+     <img alt="Campus Funda" class="footer-logo" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png"/>
+     <p class="footer-about-text">
+      Campus Funda – making learning easy, advanced &amp; accessible for every student.
+     </p>
+    </div>
+    <div class="footer-col">
+     <h5>
+      QUICK LINKS
+     </h5>
+     <div class="footer-bar">
+     </div>
+     <p>
+      <a href="index.html">
+       Home
+      </a>
+     </p>
+     <p>
+      <a href="publisher.html">
+       For Publishers
+      </a>
+     </p>
+     <p>
+      <a href="author.html">
+       For Authors
+      </a>
+     </p>
+     <p>
+      <a href="institute.html">
+       For Institutes
+      </a>
+     </p>
+     <p>
+      <a href="about-us.html">
+       About Us
+      </a>
+     </p>
+    </div>
+    <div class="footer-col footer-newsletter">
+     <h5>
+      NEWSLETTER
+     </h5>
+     <div class="footer-bar">
+     </div>
+     <p>
+      Email Address:
+     </p>
+     <input placeholder="Your email address" type="email"/>
+     <button>
+      Subscribe
+     </button>
+    </div>
+   </div>
+   <div class="footer-bottom">
+    <p class="footer-copy">
+     © 2024
+     <span>
+      Campus Funda
+     </span>
+     – All Rights Reserved
+    </p>
+    <div class="social-links">
+     <a href="https://www.facebook.com/campusfunda/" target="_blank">
+      f
+     </a>
+     <a href="https://www.linkedin.com/company/campus-funda/" target="_blank">
+      in
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script>
+   const c = JSON.parse(localStorage.getItem('cf_cart') || '[]');
+    document.getElementById('cartCount').textContent = c.length;
+  </script>
+ </body>
+</html>

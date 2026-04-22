@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>My Cart – Campus Funda</title>
+    <link href="shared.css" rel="stylesheet" />
+    <style>
+      .cart-layout {
+        display: flex;
+        gap: 28px;
+        align-items: flex-start;
+      }
+
+      .cart-items {
+        flex: 1;
+      }
+
+      .cart-summary {
+        flex: 0 0 320px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px;
+        position: sticky;
+        top: 100px;
+      }
+
+      .cart-summary h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+      }
+
+      .summary-row.total {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+        margin-bottom: 22px;
+      }
+
+      .summary-row.total span:last-child {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .checkout-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: var(--accent-grad);
+        color: #fff;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+
+      .checkout-btn:hover {
+        opacity: 0.88;
+        transform: scale(1.01);
+        color: #fff;
+      }
+
+      .continue-link {
+        display: block;
+        text-align: center;
+        font-size: 13px;
+        color: var(--accent);
+        margin-top: 14px;
+      }
+
+      .continue-link:hover {
+        text-decoration: underline;
+        color: var(--accent);
+      }
+
+      .cart-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 14px;
+        transition: border-color 0.2s;
+      }
+
+      .cart-item:hover {
+        border-color: var(--accent);
+      }
+
+      .cart-item-img {
+        width: 80px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
+
+      .cart-item-info {
+        flex: 1;
+      }
+
+      .cart-item-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .cart-item-author {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .cart-item-type {
+        font-size: 11px;
+        font-weight: 700;
+        background: rgba(10, 180, 181, 0.1);
+        border: 1px solid rgba(10, 180, 181, 0.2);
+        color: var(--accent);
+        padding: 2px 9px;
+        border-radius: 12px;
+        display: inline-block;
+      }
+
+      .cart-item-price {
+        font-size: 18px;
+        font-weight: 700;
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        flex-shrink: 0;
+      }
+
+      .remove-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 6px;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+
+      .remove-btn:hover {
+        color: #ed4747;
+        background: rgba(237, 71, 71, 0.1);
+      }
+
+      .empty-cart {
+        text-align: center;
+        padding: 80px 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+      }
+
+      .empty-cart .icon {
+        font-size: 64px;
+        margin-bottom: 20px;
+      }
+
+      .empty-cart h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .empty-cart p {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+      }
+
+      .browse-btn {
+        display: inline-block;
+        background: var(--accent-grad);
+        color: #fff;
+        padding: 13px 32px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        transition: opacity 0.2s;
+      }
+
+      .browse-btn:hover {
+        opacity: 0.88;
+        color: #fff;
+      }
+
+      /* Promo code */
+      .promo-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+      }
+
+      .promo-row input {
+        flex: 1;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--text-primary);
+        font-size: 13px;
+        outline: none;
+      }
+
+      .promo-row input:focus {
+        border-color: var(--accent);
+      }
+
+      .promo-row button {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 9px 16px;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .promo-row button:hover {
+        border-color: var(--accent);
+        background: rgba(10, 180, 181, 0.08);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a href="institute.html"> For Institutes </a>
+        <a href="author.html"> For Authors </a>
+        <a href="publisher.html"> For Publishers </a>
+      </div>
+    </div>
+    <header>
+      <div class="header-inner">
+        <div class="logo-area">
+          <a href="index.html">
+            <img
+              alt="Campus Funda"
+              src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png"
+            />
+          </a>
+        </div>
+        <ul class="main-nav">
+          <li>
+            <a href="search.html"> Higher Education </a>
+          </li>
+          <li>
+            <a href="search.html"> Competitive Exams </a>
+          </li>
+          <li>
+            <a href="search.html"> School </a>
+          </li>
+          <li><a href="about-us.html">About-Us</a></li>
+        </ul>
+        <div class="header-actions" id="headerActions">
+          <a class="cart-btn" href="cart.html">
+            🛒
+            <span class="cart-badge" id="cartCount"> 0 </span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html"> Home </a>
+          <span> › </span>
+          <span> My Cart </span>
+        </div>
+        <h1>My Cart</h1>
+        <p>Review your selected study materials before checkout.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cart-layout" id="cartLayout">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+    <footer>
+      <div class="footer-main">
+        <div class="footer-col-about">
+          <img
+            alt="Campus Funda"
+            class="footer-logo"
+            src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png"
+          />
+          <p class="footer-about-text">
+            Campus Funda – making learning easy, advanced &amp; accessible for
+            every student.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>QUICK LINKS</h5>
+          <div class="footer-bar"></div>
+          <p>
+            <a href="index.html"> Home </a>
+          </p>
+          <p>
+            <a href="search.html"> eBooks </a>
+          </p>
+          <p>
+            <a href="about-us.html"> About Us </a>
+          </p>
+          <p>
+            <a href="privacy-policy.html"> Privacy Policy </a>
+          </p>
+          <p>
+            <a href="terms-conditions.html"> Terms &amp; Conditions </a>
+          </p>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h5>NEWSLETTER</h5>
+          <div class="footer-bar"></div>
+          <p>Email Address:</p>
+          <input placeholder="Your email address" type="email" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2024
+          <span> Campus Funda </span>
+          – All Rights Reserved
+        </p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/campusfunda/"
+            rel="noopener"
+            target="_blank"
+          >
+            f
+          </a>
+          <a
+            href="https://www.linkedin.com/company/campus-funda/"
+            rel="noopener"
+            target="_blank"
+          >
+            in
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      /* ================= CART STORAGE ================= */
+      function getCart() {
+        return JSON.parse(localStorage.getItem("cf_cart") || "[]");
+      }
+
+      function saveCart(c) {
+        localStorage.setItem("cf_cart", JSON.stringify(c));
+      }
+
+      function formatPrice(p) {
+        return p === 0 ? "FREE" : "&#8377;" + p;
+      }
+
+      function updateCartCount() {
+        const count = getCart().length;
+        const badge = document.getElementById("cartCount");
+        if (badge) badge.textContent = count;
+      }
+
+      /* ================= PROMO ================= */
+      let promoDiscount = 0;
+
+      function applyPromo() {
+        const code = document
+          .getElementById("promoInput")
+          .value.trim()
+          .toUpperCase();
+
+        if (code === "CF10") {
+          promoDiscount = 0.1;
+          alert("Promo applied! 10% off 🎉");
+        } else if (code === "FREE100") {
+          promoDiscount = 1;
+          alert("Full discount applied 😄");
+        } else {
+          promoDiscount = 0;
+          alert("Invalid promo code");
+        }
+
+        renderCart();
+      }
+
+      /* ================= RENDER CART ================= */
+      function renderCart() {
+        const cart = getCart();
+        const layout = document.getElementById("cartLayout");
+
+        updateCartCount();
+
+        if (cart.length === 0) {
+          layout.innerHTML = `
+      <div style="flex:1">
+        <div class="empty-cart">
+          <div class="icon">🛒</div>
+          <h3>Your cart is empty</h3>
+          <p>Browse our eBooks, MCQs and Videos and add them to your cart.</p>
+          <a href="search.html" class="browse-btn">Browse Study Materials</a>
+        </div>
+      </div>`;
+          return;
+        }
+
+        const subtotal = cart.reduce((s, i) => s + i.price, 0);
+
+        let discount = 0;
+
+        if (subtotal > 500) {
+          discount += Math.round(subtotal * 0.1);
+        }
+
+        if (promoDiscount) {
+          discount = Math.round(subtotal * promoDiscount);
+        }
+
+        const total = Math.max(0, subtotal - discount);
+
+        const itemsHtml = cart
+          .map(
+            (item, idx) => `
+      <div class="cart-item">
+        <img class="cart-item-img" src="${item.img}" alt="${item.title}" />
+        <div class="cart-item-info">
+          <div class="cart-item-title">${item.title}</div>
+          <div class="cart-item-author">${item.author}</div>
+          <span class="cart-item-type">${item.type || "eBook"}</span>
+        </div>
+        <div class="cart-item-price">${formatPrice(item.price)}</div>
+        <button class="remove-btn" onclick="removeItem(${idx})">&#10005;</button>
+      </div>`,
+          )
+          .join("");
+
+        const summaryHtml = `
+    <div class="cart-summary">
+      <h3>Order Summary</h3>
+
+      <div class="summary-row">
+        <span>Items (${cart.length})</span>
+        <span>&#8377;${subtotal}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Discount</span>
+        <span style="color:#4caf50">- ₹${discount}</span>
+      </div>
+
+      <div class="promo-row">
+        <input type="text" placeholder="Promo code" id="promoInput" />
+        <button onclick="applyPromo()">Apply</button>
+      </div>
+
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>₹${total}</span>
+      </div>
+
+      <button class="checkout-btn" onclick="checkout()">
+        🔒 Proceed to Checkout
+      </button>
+
+      <a href="search.html" class="continue-link">← Continue Shopping</a>
+    </div>`;
+
+        layout.innerHTML = `
+    <div class="cart-items">${itemsHtml}</div>
+    ${summaryHtml}
+  `;
+      }
+
+      /* ================= REMOVE ITEM ================= */
+      function removeItem(idx) {
+        const cart = getCart();
+
+        const items = document.querySelectorAll(".cart-item");
+        const el = items[idx];
+
+        if (!el) return;
+
+        el.style.opacity = "0";
+        el.style.transform = "translateX(20px)";
+
+        setTimeout(() => {
+          cart.splice(idx, 1);
+          saveCart(cart);
+          renderCart();
+        }, 200);
+      }
+
+      /* ================= ADD TO CART ================= */
+      function addToCart(item) {
+        const cart = getCart();
+
+        const exists = cart.find((i) => i.id === item.id);
+        if (exists) {
+          alert("Item already in cart");
+          return;
+        }
+
+        cart.push(item);
+        saveCart(cart);
+        updateCartCount();
+      }
+
+      /* ================= CHECKOUT ================= */
+      function checkout() {
+        const cart = getCart();
+        const user = JSON.parse(localStorage.getItem("cf_user"));
+
+        if (!user) {
+          alert("Please login to continue checkout");
+          window.location.href = "login.html";
+          return;
+        }
+
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
+        }
+
+        window.location.href = "checkout.html";
+      }
+
+      /* ================= HEADER AUTH ================= */
+      const userKey = "cf_user";
+      const headerActions = document.getElementById("headerActions");
+
+      function renderHeader() {
+        const user = JSON.parse(localStorage.getItem(userKey));
+        const cart = getCart(); // ✅ FIX: define cart here
+
+        if (user) {
+          const fullName = user.firstName + " " + (user.lastName || "");
+
+          headerActions.innerHTML = `
+      <div class="user-menu">
+        <div class="user-trigger" id="userTrigger">
+          👤 ${fullName}
+        </div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+          <div class="dropdown-header">
+            <strong>${fullName}</strong><br>
+            <span>${user.email}</span>
+          </div>
+
+          <a href="#">My Profile</a>
+          <a href="#">My Orders</a>
+          <hr>
+          <a href="#" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+
+      <a class="cart-btn" href="cart.html">
+        🛒
+        <span class="cart-badge" id="cartCount">${cart.length}</span>
+      </a>
+    `;
+
+          const trigger = document.getElementById("userTrigger");
+          const menu = document.getElementById("dropdownMenu");
+
+          trigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.style.display =
+              menu.style.display === "flex" ? "none" : "flex";
+          });
+
+          document.addEventListener("click", () => {
+            menu.style.display = "none";
+          });
+
+          menu.addEventListener("click", (e) => e.stopPropagation());
+
+          document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.removeItem(userKey);
+            window.location.reload();
+          });
+        } else {
+          headerActions.innerHTML = `
+      <a class="btn-login" href="login.html">👤 LOG IN</a>
+      <a class="btn-signup" href="register.html">SIGN UP</a>
+
+      <a class="cart-btn" href="cart.html">
+        🛒
+        <span class="cart-badge" id="cartCount">${cart.length}</span>
+      </a>
+    `;
+        }
+
+        updateCartCount();
+      }
+
+      /* ================= INIT ================= */
+      renderHeader();
+      renderCart();
+    </script>
+  </body>
+</html>

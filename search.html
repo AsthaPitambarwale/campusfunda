@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Search eBooks – Campus Funda</title>
+    <link href="shared.css" rel="stylesheet" />
+    <style>
+      .hero-search-full {
+        display: flex;
+        gap: 0;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 32px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .hero-search-full input {
+        flex: 1;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 14px 20px;
+        color: var(--text-primary);
+        font-size: 15px;
+      }
+
+      .hero-search-full input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .hero-search-full button {
+        background: var(--accent-grad);
+        border: none;
+        padding: 0 28px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        transition: opacity 0.2s;
+      }
+
+      .hero-search-full button:hover {
+        opacity: 0.86;
+      }
+
+      .sidebar-layout {
+        display: flex;
+        gap: 28px;
+      }
+
+      .sidebar {
+        flex: 0 0 230px;
+      }
+
+      .sidebar-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .sidebar-box h4 {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .sidebar-box label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        padding: 7px 0;
+        cursor: pointer;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.2s;
+      }
+
+      .sidebar-box label:last-child {
+        border-bottom: none;
+      }
+
+      .sidebar-box label:hover {
+        color: var(--accent);
+      }
+
+      .sidebar-box input[type="checkbox"] {
+        accent-color: var(--accent);
+      }
+
+      .results-area {
+        flex: 1;
+      }
+
+      .results-info {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+
+      .results-info span {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .pub-tag {
+        position: absolute;
+        bottom: 8px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 11px;
+        padding: 2px 7px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a href="institute.html"> For Institutes </a>
+        <a href="author.html"> For Authors </a>
+        <a href="publisher.html"> For Publishers </a>
+      </div>
+    </div>
+    <header>
+      <div class="header-inner">
+        <div class="logo-area">
+          <a href="index.html">
+            <img
+              alt="Campus Funda"
+              src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png"
+            />
+          </a>
+        </div>
+        <ul class="main-nav">
+          <li>
+            <a class="active" href="search.html"> Higher Education </a>
+          </li>
+          <li>
+            <a href="search.html"> Competitive Exams </a>
+          </li>
+          <li>
+            <a href="search.html"> School </a>
+          </li>
+          <li><a href="about-us.html">About-Us</a></li>
+        </ul>
+        <div class="header-actions" id="headerActions">
+          <a class="cart-btn" href="cart.html">
+            🛒
+            <span class="cart-badge" id="cartCount"> 0 </span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html"> Home </a>
+          <span> › </span>
+          <span> Search eBooks </span>
+        </div>
+        <h1>Browse eBooks &amp; Study Materials</h1>
+        <p>
+          Discover thousands of eBooks, MCQs, Videos and more for your course.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hero-search-full">
+        <input
+          id="searchInput"
+          placeholder="Search by book name, author, or publication..."
+          type="text"
+        />
+        <button onclick="applyFilters()">🔍 Search</button>
+      </div>
+      <div class="sidebar-layout">
+        <aside class="sidebar">
+          <!-- CATEGORY -->
+          <div class="sidebar-box" id="categoryBox">
+            <h4>Category</h4>
+            <label><input type="checkbox" value="eBook" /> eBooks</label>
+            <label><input type="checkbox" value="MCQ" /> MCQ's</label>
+            <label><input type="checkbox" value="Video" /> Videos</label>
+            <label><input type="checkbox" value="Combo" /> Combo Sets</label>
+          </div>
+
+          <!-- UNIVERSITY (optional, not used yet) -->
+          <!-- <div class="sidebar-box" id="universityBox">
+            <h4>University</h4>
+            <label
+              ><input type="checkbox" value="PU" /> Pune University (PU)</label
+            >
+            <label
+              ><input type="checkbox" value="MU" /> Mumbai University
+              (MU)</label
+            >
+            <label><input type="checkbox" value="GTU" /> GTU</label>
+            <label><input type="checkbox" value="MSBTE" /> MSBTE</label>
+            <label><input type="checkbox" value="DBATU" /> DBATU</label>
+          </div> -->
+
+          <!-- PRICE -->
+          <div class="sidebar-box" id="priceBox">
+            <h4>Price Range</h4>
+            <label><input type="checkbox" value="free" /> Free</label>
+            <label><input type="checkbox" value="under100" /> Under ₹100</label>
+            <label><input type="checkbox" value="100-300" /> ₹100 – ₹300</label>
+            <label><input type="checkbox" value="300-500" /> ₹300 – ₹500</label>
+          </div>
+        </aside>
+        <div class="results-area">
+          <div class="results-info">
+            Showing
+            <span> 48 </span>
+            results for all eBooks
+          </div>
+          <div class="cards-grid" id="cardsContainer">
+            <!-- cards will be rendered dynamically -->
+          </div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-main">
+        <div class="footer-col-about">
+          <img
+            alt="Campus Funda"
+            class="footer-logo"
+            src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png"
+          />
+          <p class="footer-about-text">
+            Campus Funda has been focused on making learning easy, advanced
+            &amp; accessible for over a decade.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>QUICK LINKS</h5>
+          <div class="footer-bar"></div>
+          <p>
+            <a href="index.html"> Home </a>
+          </p>
+          <p>
+            <a href="search.html"> eBooks </a>
+          </p>
+          <p>
+            <a href="videos.html"> Videos </a>
+          </p>
+          <p>
+            <a href="mcqs.html"> MCQ's </a>
+          </p>
+          <p>
+            <a href="discussion-forum.html"> Discussion Forum </a>
+          </p>
+          <p>
+            <a href="about-us.html"> About Us </a>
+          </p>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h5>NEWSLETTER</h5>
+          <div class="footer-bar"></div>
+          <p>Email Address:</p>
+          <input placeholder="Your email address" type="email" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2024
+          <span> Campus Funda </span>
+          – All Rights Reserved
+        </p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/campusfunda/"
+            rel="noopener"
+            target="_blank"
+          >
+            f
+          </a>
+          <a
+            href="https://www.linkedin.com/company/campus-funda/"
+            rel="noopener"
+            target="_blank"
+          >
+            in
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        /* ====== DATA (same as your book-detail page) ====== */
+        const BOOKS = [
+          {
+            id: "2208",
+            title: "Water Resources Engineering",
+            author: "Nishant A. Upadhye",
+            price: 150,
+            original: 200,
+            type: "eBook",
+            img: "https://techknowledgebooks.com/wp-content/uploads/2024/01/WATER-RESOURCES-ENGINEERING-ME216C-scaled.jpg",
+          },
+
+          {
+            id: "2863",
+            title: "Theory of Computation",
+            author: "Dilip Kumar Sultania",
+            price: 296,
+            original: 395,
+            type: "eBook",
+            img: "https://i0.wp.com/onlineabc.in/wp-content/uploads/2020/09/Theory-of-Computation-TKP.jpg?fit=300%2C400&ssl=1",
+          },
+
+          {
+            id: "2865",
+            title: "Database Management Systems",
+            author: "Prof. Mahesh Mali",
+            price: 296,
+            original: 395,
+            type: "eBook",
+            img: "https://techknowledgebooks.com/wp-content/uploads/2020/07/Database-Management-System-1-scaled.jpg",
+          },
+
+          {
+            id: "2868",
+            title: "Microcontroller",
+            author: "Harish G. Narula",
+            price: 349,
+            original: 465,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRKiSUf-WbAA2sal2bQ12ZH_PjpKWq_1njJg&s",
+          },
+
+          {
+            id: "11",
+            title: "Embedded & Real Time OS",
+            author: "Harish G Narula",
+            price: 35,
+            original: 40,
+            type: "MCQ",
+            img: "https://techknowledgebooks.com/wp-content/uploads/2019/09/Embedded-Systems-MDO37B-scaled.jpg",
+          },
+
+          {
+            id: "13",
+            title: "Industrial Engineering",
+            author: "Anand Bewoor",
+            price: 35,
+            original: 40,
+            type: "MCQ",
+            img: "https://c.animaapp.com/mo7ln2dorSAfU1/assets/13.jpg",
+          },
+
+          {
+            id: "v1",
+            title: "Ohm's Law",
+            author: "Campus Funda",
+            price: 0,
+            type: "Video",
+            img: "http://img.youtube.com/vi/Qn1dQ0vf4N4/hqdefault.jpg",
+          },
+
+          {
+            id: "v2",
+            title: "The Stack in a Microprocessor",
+            author: "Campus Funda",
+            price: 0,
+            type: "Video",
+            img: "http://img.youtube.com/vi/d-2Peb3pCBg/hqdefault.jpg",
+          },
+
+          {
+            id: "3001",
+            title: "Operating System Concepts",
+            author: "Abraham Silberschatz",
+            price: 420,
+            original: 550,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAMFHIshtN-O0Yv4AkH1pE3qVAQ1Y2eXg87g&s",
+          },
+
+          {
+            id: "3002",
+            title: "Computer Networks",
+            author: "Andrew S. Tanenbaum",
+            price: 380,
+            original: 500,
+            type: "eBook",
+            img: "https://i0.wp.com/onlineabc.in/wp-content/uploads/2020/08/Computer-Network-TKP.jpg?fit=300%2C400&ssl=1",
+          },
+
+          {
+            id: "3003",
+            title: "Data Structures & Algorithms",
+            author: "Mark Allen Weiss",
+            price: 310,
+            original: 450,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrVegr1f0mm8G6I-Sc9oY0wj-2G3YF14cJA&s",
+          },
+
+          {
+            id: "3004",
+            title: "Digital Electronics",
+            author: "Morris Mano",
+            price: 270,
+            original: 350,
+            type: "eBook",
+            img: "https://techknowledgebooks.com/wp-content/uploads/2019/07/Digital-Electronics-MIO1C.jpg",
+          },
+
+          {
+            id: "3005",
+            title: "Software Engineering",
+            author: "Ian Sommerville",
+            price: 330,
+            original: 480,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcGC1VIgKBMSEsYSTn6bYZD7QkLR27pNMcRA&s",
+          },
+
+          {
+            id: "3006",
+            title: "Artificial Intelligence Basics",
+            author: "Stuart Russell",
+            price: 390,
+            original: 520,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrieiX2iRvFJGDLoh0SOboVa2X8TGUfI-y1Q&s",
+          },
+
+          {
+            id: "3007",
+            title: "Machine Learning Intro",
+            author: "Tom Mitchell",
+            price: 450,
+            original: 600,
+            type: "eBook",
+            img: "https://techknowledgebooks.com/wp-content/uploads/2024/01/Machine-LearningMO235B-scaled.jpg",
+          },
+
+          {
+            id: "3008",
+            title: "Cloud Computing Fundamentals",
+            author: "Rajkumar Buyya",
+            price: 299,
+            original: 420,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9hkjd9XiwWpQFfpA6955nxvGRazARqAy72A&s",
+          },
+
+          {
+            id: "3009",
+            title: "Cyber Security Essentials",
+            author: "William Stallings",
+            price: 360,
+            original: 490,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW3m4d8F32swj6Jgmf6pE-WzCF44Oxjk_yCQ&s",
+          },
+
+          {
+            id: "3010",
+            title: "Web Development Bootcamp",
+            author: "Colt Steele",
+            price: 199,
+            original: 300,
+            type: "eBook",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRar2TUfctqfEsRvaLWJ6DvJQRSrLIp790M7Q&s",
+          },
+
+          /* MCQs */
+
+          {
+            id: "4001",
+            title: "DBMS MCQ Practice",
+            author: "Campus Funda",
+            price: 49,
+            original: 70,
+            type: "MCQ",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDHtl5JDMhrZgLAgZzaXwBOjNI5cbLod0Oqw&s",
+          },
+
+          {
+            id: "4002",
+            title: "Operating System MCQs",
+            author: "Campus Funda",
+            price: 45,
+            original: 65,
+            type: "MCQ",
+            img: "https://m.media-amazon.com/images/I/71rsnYVHlML._UF1000,1000_QL80_.jpg",
+          },
+
+          {
+            id: "4003",
+            title: "Computer Networks MCQs",
+            author: "Campus Funda",
+            price: 50,
+            original: 75,
+            type: "MCQ",
+            img: "https://m.media-amazon.com/images/I/71KwxhletDL._UF1000,1000_QL80_.jpg",
+          },
+
+          {
+            id: "4004",
+            title: "Data Structures MCQs",
+            author: "Campus Funda",
+            price: 55,
+            original: 80,
+            type: "MCQ",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-UYc_U51cqgRRjNCu95E1CZIfrN2HVAPTQ&s",
+          },
+
+          {
+            id: "4005",
+            title: "Software Engineering MCQs",
+            author: "Campus Funda",
+            price: 40,
+            original: 60,
+            type: "MCQ",
+            img: "https://m.media-amazon.com/images/I/71WlU6Vhg6L._UF1000,1000_QL80_.jpg",
+          },
+
+          /* VIDEOS */
+
+          {
+            id: "v3",
+            title: "DBMS Full Course",
+            author: "Campus Funda",
+            price: 0,
+            type: "Video",
+            img: "http://img.youtube.com/vi/4Z9KEBexzcM/hqdefault.jpg",
+          },
+
+          {
+            id: "v4",
+            title: "Operating System Crash Course",
+            author: "Campus Funda",
+            price: 0,
+            type: "Video",
+            img: "http://img.youtube.com/vi/26QPDBe-NB8/hqdefault.jpg",
+          },
+
+          {
+            id: "v5",
+            title: "Data Structures Explained",
+            author: "Campus Funda",
+            price: 0,
+            type: "Video",
+            img: "http://img.youtube.com/vi/bum_19loj9A/hqdefault.jpg",
+          },
+
+          {
+            id: "v6",
+            title: "Computer Networks Basics",
+            author: "Campus Funda",
+            price: 0,
+            type: "Video",
+            img: "http://img.youtube.com/vi/qiQR5rTSshw/hqdefault.jpg",
+          },
+
+          {
+            id: "5001",
+            title: "Full Stack Combo Pack",
+            author: "Campus Funda",
+            price: 499,
+            original: 799,
+            type: "Combo",
+            img: "https://picsum.photos/200?20",
+          },
+        ];
+
+        /* ====== STATE ====== */
+        let filtered = [...BOOKS];
+        let currentPage = 1;
+        const perPage = 8;
+
+        /* ====== RENDER CARDS ====== */
+        function renderCards() {
+          const container = document.getElementById("cardsContainer");
+          if (!container) return;
+
+          const start = (currentPage - 1) * perPage;
+          const pageItems = filtered.slice(start, start + perPage);
+
+          if (pageItems.length === 0) {
+            container.innerHTML = `
+        <div style="text-align:center; padding:40px;">
+          <h3>No results found 😕</h3>
+          <p>Try adjusting your filters or search term.</p>
+        </div>
+      `;
+          } else {
+            container.innerHTML = pageItems
+              .map(
+                (b) => `
+        <a class="card" href="${b.type === "Video" ? "videos.html" : "book-detail.html?id=" + b.id}">
+          <div style="position:relative">
+            <img class="card-img" src="${b.img}" />
+            <span class="pub-tag">${b.type}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">${b.title}</div>
+            <div class="card-sub">${b.author}</div>
+          </div>
+          <div class="card-footer">
+            ${b.original ? `<span class="price-old">₹${b.original}</span>` : ""}
+            <span class="price-new">${b.price === 0 ? "FREE" : "₹" + b.price}</span>
+          </div>
+        </a>
+      `,
+              )
+              .join("");
+          }
+
+          const resultsInfo = document.querySelector(".results-info");
+          if (resultsInfo) {
+            resultsInfo.innerHTML = `Showing <span>${filtered.length}</span> results`;
+          }
+
+          renderPagination();
+        }
+
+        /* ====== PAGINATION ====== */
+        function renderPagination() {
+          const pag = document.getElementById("pagination");
+          if (!pag) return;
+
+          const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+          if (currentPage > totalPages) currentPage = 1;
+          let html = "";
+
+          for (let i = 1; i <= totalPages; i++) {
+            html += `
+        <div class="page-btn ${i === currentPage ? "active" : ""}" onclick="goPage(${i})">
+          ${i}
+        </div>
+      `;
+          }
+
+          pag.innerHTML = html;
+        }
+
+        function goPage(p) {
+          currentPage = p;
+          renderCards();
+        }
+
+        window.goPage = goPage;
+
+        /* ====== SEARCH ====== */
+        let debounceTimer;
+
+        document
+          .getElementById("searchInput")
+          ?.addEventListener("input", () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(applyFilters, 300);
+          });
+
+        /* ====== FILTER LISTENERS ====== */
+        document
+          .querySelectorAll(".sidebar-box input")
+          .forEach((cb) => cb.addEventListener("change", applyFilters));
+
+        /* ====== FILTER LOGIC ====== */
+        function applyFilters() {
+          const search =
+            document.getElementById("searchInput")?.value.toLowerCase() || "";
+
+          const boxes = document.querySelectorAll(".sidebar-box");
+          const categoryChecks =
+            document.querySelectorAll("#categoryBox input");
+          const priceChecks = document.querySelectorAll("#priceBox input");
+
+          const selectedTypes = [...categoryChecks]
+            .filter((c) => c.checked)
+            .map((c) => c.value);
+
+          const selectedPrices = [...priceChecks]
+            .filter((c) => c.checked)
+            .map((c) => c.value);
+
+          filtered = BOOKS.filter((b) => {
+            const matchSearch =
+              b.title.toLowerCase().includes(search) ||
+              b.author.toLowerCase().includes(search) ||
+              b.type.toLowerCase().includes(search);
+
+            let matchType = true;
+            if (selectedTypes.length > 0) {
+              matchType = selectedTypes.includes(b.type);
+            }
+
+            let matchPrice = true;
+            if (selectedPrices.length > 0) {
+              matchPrice = selectedPrices.some((p) => {
+                if (p === "free") return b.price === 0;
+                if (p === "under100") return b.price > 0 && b.price < 100;
+                if (p === "100-300") return b.price >= 100 && b.price <= 300;
+                if (p === "300-500") return b.price >= 300 && b.price <= 500;
+              });
+            }
+
+            return matchSearch && matchType && matchPrice;
+          });
+
+          currentPage = 1;
+          renderCards();
+        }
+
+        /* ====== CART ====== */
+        function updateCartCount() {
+          const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+          const badge = document.getElementById("cartCount");
+          if (badge) badge.textContent = cart.length;
+        }
+
+        /* ====== INIT ====== */
+        renderCards();
+        updateCartCount();
+
+        /* ================= AUTH ================= */
+        const userKey = "cf_user";
+        const headerActions = document.getElementById("headerActions");
+
+        function renderHeader() {
+          const user = JSON.parse(localStorage.getItem(userKey));
+          const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+
+          if (!headerActions) return;
+
+          if (user) {
+            const fullName = user.firstName + " " + (user.lastName || "");
+
+            headerActions.innerHTML = `
+        <div class="user-menu">
+          <div class="user-trigger" id="userTrigger">
+            👤 ${fullName}
+          </div>
+
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-header">
+              <strong>${fullName}</strong><br>
+              <span>${user.email}</span>
+            </div>
+
+            <a href="#">My Profile</a>
+            <a href="#">My Orders</a>
+            <hr>
+            <a href="#" id="logoutBtn">Logout</a>
+          </div>
+        </div>
+
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount">${cart.length}</span>
+        </a>
+      `;
+
+            const trigger = document.getElementById("userTrigger");
+            const menu = document.getElementById("dropdownMenu");
+
+            trigger.addEventListener("click", (e) => {
+              e.stopPropagation();
+              menu.style.display =
+                menu.style.display === "flex" ? "none" : "flex";
+            });
+
+            document.addEventListener("click", () => {
+              menu.style.display = "none";
+            });
+
+            menu.addEventListener("click", (e) => e.stopPropagation());
+
+            document
+              .getElementById("logoutBtn")
+              .addEventListener("click", () => {
+                localStorage.removeItem(userKey);
+                window.location.reload();
+              });
+          } else {
+            headerActions.innerHTML = `
+        <a class="btn-login" href="login.html"> 👤 LOG IN </a>
+        <a class="btn-signup" href="register.html"> SIGN UP </a>
+
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount">${cart.length}</span>
+        </a>
+      `;
+          }
+        }
+
+        renderHeader();
+      });
+    </script>
+  </body>
+</html>

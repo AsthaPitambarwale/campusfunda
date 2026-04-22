@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Discussion Forum – Campus Funda</title>
+  <link href="shared.css" rel="stylesheet" />
+  <style>
+    .forum-layout {
+      display: flex;
+      gap: 28px;
+    }
+
+    .forum-sidebar {
+      flex: 0 0 240px;
+    }
+
+    .forum-main {
+      flex: 1;
+    }
+
+    .sidebar-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .sidebar-box h4 {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .category-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+      background: rgba(10, 180, 181, 0.1);
+      color: var(--accent);
+      border-color: rgba(10, 180, 181, 0.2);
+    }
+
+    .category-btn .count {
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 10px;
+    }
+
+    .forum-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .sort-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .sort-tab {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .sort-tab.active,
+    .sort-tab:hover {
+      background: var(--accent-grad);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hot-badge {
+      background: linear-gradient(to right, #f33a6d, #f5a623);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+    }
+
+    .answered-badge {
+      background: rgba(10, 180, 181, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(10, 180, 181, 0.25);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+    }
+
+    .thread-card {
+      display: flex;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .thread-votes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 0 0 50px;
+    }
+
+    .vote-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .vote-count {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .thread-content {
+      flex: 1;
+    }
+
+    .thread-category {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .thread-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .thread-excerpt {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .thread-meta {
+      display: flex;
+      gap: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .page-btn {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .page-btn.active {
+      background: var(--accent-grad);
+      color: #fff;
+      border-color: transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="institute.html">For Institutes</a>
+      <a href="author.html">For Authors</a>
+      <a href="publisher.html">For Publishers</a>
+    </div>
+  </div>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <a href="index.html">
+          <img alt="Campus Funda" src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/header_logo.png" />
+        </a>
+      </div>
+      <ul class="main-nav">
+        <li>
+          <a href="search.html"> Higher Education </a>
+        </li>
+        <li>
+          <a href="search.html"> Competitive Exams </a>
+        </li>
+        <li>
+          <a href="search.html"> School </a>
+        </li>
+        <li><a href="about-us.html">About-Us</a></li>
+      </ul>
+      <div class="header-actions" id="headerActions">
+        <a class="cart-btn" href="cart.html">
+          🛒
+          <span class="cart-badge" id="cartCount"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html"> Home </a>
+        <span> › </span>
+        <span> Discussion Forum </span>
+      </div>
+      <h1>Discussion Forum</h1>
+      <p>
+        Ask questions, share knowledge, and learn together with thousands of
+        students.
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="forum-layout">
+      <aside class="forum-sidebar">
+        <div class="sidebar-box">
+          <button class="ask-btn" onclick="alert('Login required to post a question')">
+            + Ask a Question
+          </button>
+        </div>
+        <div class="sidebar-box">
+          <h4>Browse Topics</h4>
+          <div class="category-btn active">
+            All Topics
+            <span class="count"> 284 </span>
+          </div>
+          <div class="category-btn">
+            Engineering
+            <span class="count"> 92 </span>
+          </div>
+          <div class="category-btn">
+            Computer Science
+            <span class="count"> 67 </span>
+          </div>
+          <div class="category-btn">
+            Electronics
+            <span class="count"> 45 </span>
+          </div>
+          <div class="category-btn">
+            Mechanical
+            <span class="count"> 38 </span>
+          </div>
+          <div class="category-btn">
+            Civil
+            <span class="count"> 22 </span>
+          </div>
+          <div class="category-btn">
+            MCQ Help
+            <span class="count"> 20 </span>
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <h4>Top Contributors</h4>
+          <div style="font-size: 13px; color: var(--text-muted); line-height: 2">
+            <div>🎉 Priya M. — 142 answers</div>
+            <div>🎉 Rahul K. — 98 answers</div>
+            <div>🎉 Anjali S. — 74 answers</div>
+            <div>🎉 Vikram R. — 61 answers</div>
+          </div>
+        </div>
+      </aside>
+      <div class="forum-main">
+        <div class="forum-topbar">
+          <div class="sort-tabs">
+            <div class="sort-tab active">Latest</div>
+            <div class="sort-tab">Most Votes</div>
+            <div class="sort-tab">Unanswered</div>
+          </div>
+          <div class="search-wrap" style="flex: 0 0 280px">
+            <input id="forumSearch" placeholder="Search discussions..." type="text" />
+            <button id="forumSearchBtn">🔍</button>
+          </div>
+        </div>
+        <div id="threadContainer">
+          <!-- ALL thread-card divs go here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-col-about">
+        <img alt="Campus Funda" class="footer-logo"
+          src="https://c.animaapp.com/mo7ln2dorSAfU1/assets/footer_logo.png" />
+        <p class="footer-about-text">
+          Campus Funda – making learning easy, advanced &amp; accessible for
+          every student.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>QUICK LINKS</h5>
+        <div class="footer-bar"></div>
+        <p>
+          <a href="index.html"> Home </a>
+        </p>
+        <p>
+          <a href="search.html"> eBooks </a>
+        </p>
+        <p>
+          <a href="videos.html"> Videos </a>
+        </p>
+        <p>
+          <a href="mcqs.html"> MCQ's </a>
+        </p>
+        <p>
+          <a href="discussion-forum.html"> Discussion Forum </a>
+        </p>
+        <p>
+          <a href="about-us.html"> About Us </a>
+        </p>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h5>NEWSLETTER</h5>
+        <div class="footer-bar"></div>
+        <p>Email Address:</p>
+        <input placeholder="Your email address" type="email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2024
+        <span> Campus Funda </span>
+        – All Rights Reserved
+      </p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/campusfunda/" rel="noopener" target="_blank">
+          f
+        </a>
+        <a href="https://www.linkedin.com/company/campus-funda/" rel="noopener" target="_blank">
+          in
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    /* ===== DATA ===== */
+    const THREADS = [
+      {
+        category: "Computer Science",
+        title:
+          "What is the difference between DFS and BFS in graph traversal?",
+        excerpt:
+          "I keep getting confused between depth-first and breadth-first search...",
+        author: "priya_m",
+        replies: 8,
+        views: 142,
+        time: "2 hours ago",
+        votes: 24,
+        answered: true,
+        hot: false,
+      },
+      {
+        category: "Electronics",
+        title: "How does an 8051 microcontroller handle interrupts?",
+        excerpt:
+          "Studying for my SPPU exam and the interrupt service routine concept is not clear...",
+        author: "rahul_k",
+        replies: 12,
+        views: 310,
+        time: "5 hours ago",
+        votes: 17,
+        answered: false,
+        hot: true,
+      },
+      {
+        category: "Engineering",
+        title: "Explain the working principle of a Pelton wheel turbine",
+        excerpt: "For Water Resources Engineering...",
+        author: "anjali_s",
+        replies: 4,
+        views: 89,
+        time: "Yesterday",
+        votes: 9,
+      },
+      {
+        category: "MCQ Help",
+        title: "MCQ on normalization — 3NF vs BCNF confusion",
+        excerpt: "I attempted the DBMS MCQ test...",
+        author: "vikram_r",
+        replies: 15,
+        views: 482,
+        time: "2 days ago",
+        votes: 31,
+        answered: true,
+      },
+    ];
+
+    let filteredThreads = [...THREADS];
+
+    /* ===== RENDER ===== */
+    function renderThreads() {
+      const container = document.getElementById("threadContainer");
+      if (!container) return;
+
+      if (filteredThreads.length === 0) {
+        container.innerHTML = "<p>No discussions found</p>";
+        return;
+      }
+
+      container.innerHTML = filteredThreads
+        .map(
+          (t) => `
+    <div class="thread-card">
+      <div class="thread-votes">
+        <button class="vote-btn">▲</button>
+        <div class="vote-count">${t.votes}</div>
+        <button class="vote-btn">▼</button>
+      </div>
+
+      <div class="thread-content">
+        <div class="thread-category">${t.category}</div>
+
+        <div class="thread-title">
+          ${t.title}
+          ${t.answered ? '<span class="answered-badge"> ✓ Answered </span>' : ""}
+          ${t.hot ? '<span class="hot-badge"> HOT </span>' : ""}
+        </div>
+
+        <div class="thread-excerpt">${t.excerpt}</div>
+
+        <div class="thread-meta">
+          <span>👤 ${t.author}</span>
+          <span>💬 ${t.replies} replies</span>
+          <span>👁 ${t.views} views</span>
+          <span>🕐 ${t.time}</span>
+        </div>
+      </div>
+    </div>
+  `,
+        )
+        .join("");
+    }
+
+    /* ===== SEARCH ===== */
+    function applySearch() {
+      const input = document.getElementById("forumSearch");
+      if (!input) return;
+
+      const val = input.value.toLowerCase();
+
+      filteredThreads = THREADS.filter(
+        (t) =>
+          t.title.toLowerCase().includes(val) ||
+          t.category.toLowerCase().includes(val) ||
+          t.author.toLowerCase().includes(val),
+      );
+
+      renderThreads();
+    }
+
+    /* ===== CART ===== */
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+      const badge = document.getElementById("cartCount");
+      if (badge) badge.textContent = cart.length;
+    }
+
+    /* ================= AUTH ================= */
+    const userKey = "cf_user";
+
+    function renderHeader() {
+      const headerActions = document.getElementById("headerActions");
+      if (!headerActions) return;
+
+      const user = JSON.parse(localStorage.getItem(userKey));
+      const cart = JSON.parse(localStorage.getItem("cf_cart") || "[]");
+
+      if (user) {
+        const fullName = user.firstName + " " + (user.lastName || "");
+
+        headerActions.innerHTML = `
+      <div class="user-menu">
+        <div class="user-trigger" id="userTrigger">
+          👤 ${fullName}
+        </div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+          <div class="dropdown-header">
+            <strong>${fullName}</strong><br>
+            <span>${user.email}</span>
+          </div>
+
+          <a href="#">My Profile</a>
+          <a href="#">My Orders</a>
+          <hr>
+          <a href="#" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+
+      <a class="cart-btn" href="cart.html">
+        🛒
+        <span class="cart-badge" id="cartCount">${cart.length}</span>
+      </a>
+    `;
+
+        const trigger = document.getElementById("userTrigger");
+        const menu = document.getElementById("dropdownMenu");
+
+        if (trigger && menu) {
+          trigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.style.display =
+              menu.style.display === "flex" ? "none" : "flex";
+          });
+
+          document.addEventListener("click", () => {
+            menu.style.display = "none";
+          });
+
+          menu.addEventListener("click", (e) => {
+            e.stopPropagation();
+          });
+        }
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem(userKey);
+            window.location.reload();
+          });
+        }
+      } else {
+        headerActions.innerHTML = `
+      <a class="btn-login" href="login.html"> 👤 LOG IN </a>
+      <a class="btn-signup" href="register.html"> SIGN UP </a>
+
+      <a class="cart-btn" href="cart.html">
+        🛒
+        <span class="cart-badge" id="cartCount">${cart.length}</span>
+      </a>
+    `;
+      }
+
+      updateCartCount();
+    }
+
+    /* ===== INIT ===== */
+    document.addEventListener("DOMContentLoaded", () => {
+      renderThreads();
+      renderHeader();
+
+      const btn = document.getElementById("forumSearchBtn");
+      const input = document.getElementById("forumSearch");
+
+      if (btn) btn.addEventListener("click", applySearch);
+      if (input) input.addEventListener("input", applySearch);
+    });
+  </script>
+</body>
+
+</html>

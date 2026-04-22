@@ -1,239 +1,240 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Detail – Campus Funda</title>
     <link rel="stylesheet" href="shared.css" />
 
     <style>
-      /* ===== LAYOUT (same as book page) ===== */
-      .video-layout {
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-        margin-bottom: 40px;
-      }
-
-      .video-player-col {
-        flex: 1;
-      }
-
-      iframe {
-        width: 100%;
-        height: 420px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-      }
-
-      .video-info-col {
-        flex: 1;
-      }
-
-      .video-title {
-        font-size: 32px;
-        font-weight: 800;
-        margin-bottom: 10px;
-      }
-
-      .video-subject {
-        font-size: 16px;
-        color: var(--accent);
-        font-weight: 600;
-        margin-bottom: 16px;
-      }
-
-      .meta-row {
-        display: flex;
-        gap: 18px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid var(--border);
-        color: var(--text-muted);
-        font-size: 13px;
-      }
-
-      .desc {
-        color: var(--text-muted);
-        line-height: 1.8;
-        margin-bottom: 25px;
-        font-size: 14px;
-      }
-
-      .cta-row {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-      }
-
-      .btn {
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-weight: 700;
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-primary {
-        background: var(--accent-grad);
-        color: white;
-      }
-
-      .btn-outline {
-        border: 2px solid var(--accent);
-        color: var(--accent);
-        background: transparent;
-      }
-
-      /* ===== TABS (same structure as book page) ===== */
-      .tabs {
-        display: flex;
-        border-bottom: 1px solid var(--border);
-        margin-top: 30px;
-      }
-
-      .tab {
-        padding: 12px 20px;
-        font-weight: 600;
-        color: var(--text-muted);
-        cursor: pointer;
-        border-bottom: 3px solid transparent;
-      }
-
-      .tab.active {
-        color: var(--text-primary);
-        border-bottom-color: var(--accent);
-      }
-
-      .panel {
-        display: none;
-        padding-top: 20px;
-      }
-
-      .panel.active {
-        display: block;
-      }
-
-      /* ===== RELATED GRID (like book page) ===== */
-      .related-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
-
-      @media (max-width: 900px) {
+        /* ===== LAYOUT (same as book page) ===== */
         .video-layout {
-          flex-direction: column;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 40px;
         }
 
+        .video-player-col {
+            flex: 1;
+        }
+
+        iframe {
+            width: 100%;
+            height: 420px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .video-info-col {
+            flex: 1;
+        }
+
+        .video-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .video-subject {
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .desc {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-grad);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        /* ===== TABS (same structure as book page) ===== */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-top: 30px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent);
+        }
+
+        .panel {
+            display: none;
+            padding-top: 20px;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        /* ===== RELATED GRID (like book page) ===== */
         .related-grid {
-          grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
-      }
-    </style>
-  </head>
 
-  <body>
+        @media (max-width: 900px) {
+            .video-layout {
+                flex-direction: column;
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
     <header>
-      <div class="header-inner">
-        <a href="videos.html">← Back</a>
-      </div>
+        <div class="header-inner">
+            <a href="videos.html">← Back</a>
+        </div>
     </header>
 
     <div class="container" id="videoContainer">Loading...</div>
 
     <script>
-      const VIDEO_DETAILS = {
-        v1: {
-          id: "v1",
-          title: "Ohm's Law",
-          author: "Campus Funda",
-          subject: "Electrical Engineering",
-          price: 0,
-          rating: 4.3,
-          views: 1200,
-          duration: "12:45",
-          description:
-            "Learn the fundamental concept of Ohm’s Law, explaining the relationship between voltage, current, and resistance with simple numerical examples.",
-          img: "https://img.youtube.com/vi/Qn1dQ0vf4N4/hqdefault.jpg",
-          videoUrl: "https://www.youtube.com/embed/Qn1dQ0vf4N4",
-        },
+        const VIDEO_DETAILS = {
+            v1: {
+                id: "v1",
+                title: "Ohm's Law",
+                author: "Campus Funda",
+                subject: "Electrical Engineering",
+                price: 0,
+                rating: 4.3,
+                views: 1200,
+                duration: "12:45",
+                description:
+                    "Learn the fundamental concept of Ohm’s Law, explaining the relationship between voltage, current, and resistance with simple numerical examples.",
+                img: "https://img.youtube.com/vi/Qn1dQ0vf4N4/hqdefault.jpg",
+                videoUrl: "https://www.youtube.com/embed/Qn1dQ0vf4N4",
+            },
 
-        v2: {
-          id: "v2",
-          title: "The Stack in a Microprocessor",
-          author: "Campus Funda",
-          subject: "Computer Engineering",
-          price: 0,
-          rating: 4.2,
-          views: 980,
-          duration: "15:10",
-          description:
-            "This video explains the stack structure in a microprocessor, including push/pop operations and its role in function calls and memory management.",
-          img: "https://img.youtube.com/vi/d-2Peb3pCBg/hqdefault.jpg",
-          videoUrl: "https://www.youtube.com/embed/d-2Peb3pCBg",
-        },
+            v2: {
+                id: "v2",
+                title: "The Stack in a Microprocessor",
+                author: "Campus Funda",
+                subject: "Computer Engineering",
+                price: 0,
+                rating: 4.2,
+                views: 980,
+                duration: "15:10",
+                description:
+                    "This video explains the stack structure in a microprocessor, including push/pop operations and its role in function calls and memory management.",
+                img: "https://img.youtube.com/vi/d-2Peb3pCBg/hqdefault.jpg",
+                videoUrl: "https://www.youtube.com/embed/d-2Peb3pCBg",
+            },
 
-        v3: {
-          id: "v3",
-          title: "Hydroelectric Power Plant",
-          author: "Campus Funda",
-          subject: "Mechanical Engineering",
-          price: 0,
-          rating: 4.4,
-          views: 1100,
-          duration: "14:30",
-          description:
-            "Understand how hydroelectric power plants generate electricity using water flow, turbines, and generators with clear diagrams and working principles.",
-          img: "https://img.youtube.com/vi/Uhjhufhg3Xk/hqdefault.jpg",
-          videoUrl: "https://www.youtube.com/embed/Uhjhufhg3Xk",
-        },
+            v3: {
+                id: "v3",
+                title: "Hydroelectric Power Plant",
+                author: "Campus Funda",
+                subject: "Mechanical Engineering",
+                price: 0,
+                rating: 4.4,
+                views: 1100,
+                duration: "14:30",
+                description:
+                    "Understand how hydroelectric power plants generate electricity using water flow, turbines, and generators with clear diagrams and working principles.",
+                img: "https://img.youtube.com/vi/Uhjhufhg3Xk/hqdefault.jpg",
+                videoUrl: "https://www.youtube.com/embed/Uhjhufhg3Xk",
+            },
 
-        v4: {
-          id: "v4",
-          title: "Microprocessor 8086 Architecture",
-          author: "Campus Funda",
-          subject: "Electronics",
-          price: 0,
-          rating: 4.5,
-          views: 1500,
-          duration: "18:20",
-          description:
-            "Detailed explanation of 8086 microprocessor architecture including registers, memory segmentation, and internal structure.",
-          img: "https://img.youtube.com/vi/RVNXZS-HOgw/hqdefault.jpg",
-          videoUrl: "https://www.youtube.com/embed/RVNXZS-HOgw",
-        },
+            v4: {
+                id: "v4",
+                title: "Microprocessor 8086 Architecture",
+                author: "Campus Funda",
+                subject: "Electronics",
+                price: 0,
+                rating: 4.5,
+                views: 1500,
+                duration: "18:20",
+                description:
+                    "Detailed explanation of 8086 microprocessor architecture including registers, memory segmentation, and internal structure.",
+                img: "https://img.youtube.com/vi/RVNXZS-HOgw/hqdefault.jpg",
+                videoUrl: "https://www.youtube.com/embed/RVNXZS-HOgw",
+            },
 
-        v5: {
-          id: "v5",
-          title: "Process Scheduling in Operating Systems",
-          author: "Campus Funda",
-          subject: "Computer Engineering",
-          price: 49,
-          rating: 4.6,
-          views: 2100,
-          duration: "20:05",
-          description:
-            "Covers CPU scheduling algorithms like FCFS, SJF, Priority Scheduling, and Round Robin with examples and performance comparison.",
-          img: "https://img.youtube.com/vi/yIH8V62pHWk/hqdefault.jpg",
-          videoUrl: "https://www.youtube.com/embed/yIH8V62pHWk",
-        },
-      };
+            v5: {
+                id: "v5",
+                title: "Process Scheduling in Operating Systems",
+                author: "Campus Funda",
+                subject: "Computer Engineering",
+                price: 49,
+                rating: 4.6,
+                views: 2100,
+                duration: "20:05",
+                description:
+                    "Covers CPU scheduling algorithms like FCFS, SJF, Priority Scheduling, and Round Robin with examples and performance comparison.",
+                img: "https://img.youtube.com/vi/yIH8V62pHWk/hqdefault.jpg",
+                videoUrl: "https://www.youtube.com/embed/yIH8V62pHWk",
+            },
+        };
 
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
 
-      const video = VIDEO_DETAILS[id];
+        const video = VIDEO_DETAILS[id];
 
-      if (!video) {
-        document.getElementById("videoContainer").innerHTML =
-          "<h2 style='color:red'>Video not found</h2>";
-        throw new Error("Invalid video ID");
-      }
+        if (!video) {
+            document.getElementById("videoContainer").innerHTML =
+                "<h2 style='color:red'>Video not found</h2>";
+            throw new Error("Invalid video ID");
+        }
 
-      document.getElementById("videoContainer").innerHTML = `
+        document.getElementById("videoContainer").innerHTML = `
       <div class="video-layout">
 
         <!-- LEFT: PLAYER -->
@@ -256,9 +257,8 @@
 
           <div class="cta-row">
             <button class="btn btn-primary" onclick='addVideoToCart(video)'>
-  Buy Course
-</button>
-            <button class="btn btn-outline">Add to Wishlist</button>
+                Buy Course
+            </button>
           </div>
         </div>
       </div>
@@ -283,44 +283,45 @@
       </div>
     `;
 
-      function getCart() {
-        return JSON.parse(localStorage.getItem("cf_cart") || "[]");
-      }
-
-      function saveCart(cart) {
-        localStorage.setItem("cf_cart", JSON.stringify(cart));
-      }
-
-      function addVideoToCart(video) {
-        const cart = getCart();
-
-        const exists = cart.find((i) => i.id === video.id);
-
-        if (!exists) {
-          cart.push({
-            id: video.id,
-            title: video.title,
-            price: video.price,
-            img: video.img,
-            type: "Video",
-          });
-          saveCart(cart);
+        function getCart() {
+            return JSON.parse(localStorage.getItem("cf_cart") || "[]");
         }
 
-        alert(exists ? "Already in cart" : "Added to cart");
-      }
-      
-      function switchTab(id, el) {
-        document
-          .querySelectorAll(".tab")
-          .forEach((t) => t.classList.remove("active"));
-        document
-          .querySelectorAll(".panel")
-          .forEach((p) => p.classList.remove("active"));
+        function saveCart(cart) {
+            localStorage.setItem("cf_cart", JSON.stringify(cart));
+        }
 
-        el.classList.add("active");
-        document.getElementById(id).classList.add("active");
-      }
+        function addVideoToCart(video) {
+            const cart = getCart();
+
+            const exists = cart.find((i) => i.id === video.id);
+
+            if (!exists) {
+                cart.push({
+                    id: video.id,
+                    title: video.title,
+                    price: video.price,
+                    img: video.img,
+                    type: "Video",
+                });
+                saveCart(cart);
+            }
+
+            alert(exists ? "Already in cart" : "Added to cart");
+        }
+
+        function switchTab(id, el) {
+            document
+                .querySelectorAll(".tab")
+                .forEach((t) => t.classList.remove("active"));
+            document
+                .querySelectorAll(".panel")
+                .forEach((p) => p.classList.remove("active"));
+
+            el.classList.add("active");
+            document.getElementById(id).classList.add("active");
+        }
     </script>
-  </body>
+</body>
+
 </html>
